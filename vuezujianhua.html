@@ -1,298 +1,334 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8"></meta>
-            <title>
-                vue组件化+jquery动画个人博客
-            </title>
-            <link href="scss/reset.css" rel="stylesheet" type="text/css"></link>
-            <link href="scss/main.css" rel="stylesheet" type="text/css"></link>
-                <script src="js/vue.min.js" type="text/javascript"> </script>
-                <script src="js/jquery-2.0.0.min.js" type="text/javascript"> </script>
-    </head>
-    <body>
-        <div id="app">
-            <div class="main">
-                <div class="sidebar">
-                    <h1> {{name}} </h1>
-                    <ul>
-                        <li class="todos" v-for="todo in todos"> {{todo.text}} </li>
-                    </ul>
-                    <input v-model="name"></input>
+
+<head>
+    <meta charset="utf-8"></meta>
+    <title>
+        vue组件化+jquery动画个人博客
+    </title>
+    <link href="scss/reset.css" rel="stylesheet" type="text/css"></link>
+    <link href="scss/main.css" rel="stylesheet" type="text/css"></link>
+    <script src="lib/vue.min.js" type="text/javascript">
+    </script>
+    <script src="lib/jquery-2.0.0.min.js" type="text/javascript">
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="main">
+            <div class="sidebar">
+                <h1> {{name}} </h1>
+                <ul>
+                    <li class="todos" v-for="todo in todos"> {{todo.text}} </li>
+                </ul>
+                <input v-model="name"></input>
+            </div>
+            <div class="content">
+                <div class="content-box-one fill">
+                    <show-picture v-if="seen"></show-picture>
+                    <one></one>
                 </div>
-                <div class="content">
-                    <div class="content-box-one fill">
-                    	<show-picture v-if="seen"></show-picture>
-                        <one></one>
-                    </div>
-                    <div class="content-box-two fill">
-                        <show-picture v-if="seen"></show-picture> 
-                        <two></two>
-                    </div>
-                    <div class="content-box-three fill">
-                        <show-picture v-if="seen"></show-picture>
-                        <three></three>
-                    </div>
-                    <div class="content-box-four fill">
-                        <four></four>
-                    </div>
+                <div class="content-box-two fill">
+                    <show-picture v-if="seen"></show-picture>
+                    <two></two>
+                </div>
+                <div class="content-box-three fill">
+                    <show-picture v-if="seen"></show-picture>
+                    <three></three>
+                </div>
+                <div class="content-box-four fill">
+                    <four></four>
                 </div>
             </div>
         </div>
-        <template id="picture">
-            <div class="picture">
-            </div>
-        </template>
-        <template id="box-template-one">
-            <div class="details-one">
-                <h3>个人信息</h3>
-                <ul><li><p>高 凯  男  22岁   杭州  2017届本科毕业生 15988405210 gaokai20100801@qq.com</p></li>
-                </ul>
-                <h3> 教育经历 </h3>
-                <ul>
-                    <li> 2010.09 -  2013.06  鄂尔多斯市第一中学（内蒙古自治区首批重点中学） </li>
-                    <li> 2013.09 - 至今     杭州电子科技大学（浙江省首批重点建设的5所高校之一） 通信工程学院 本科 </li>
-                </ul>
-                <h3> 实习经历 </h3>
-                <ul>
-                    <li> <p>2014年5月  - 2014年6月 </p><p>●龙湖地产—售楼部</p> </li>
-                    <li> <p>2015年5月  - 2015年6月 </p><p>●去哪儿网杭州分部—销售部</p> </li>
-                    <li> <p>2016年7月  - 2016年10月 </p><p>●浙江和仁科技股份有限公司—前端开发部</p> </li>
-                </ul>
-                <h3> 参与项目 </h3>
-                <ul>
-                    <li> ●参与龙湖时代天街停车位售卖 </li>
-                    <li> ●参与去哪儿网APP进酒店推广 </li>
-                    <li> ●参与“云医疗”项目移动端和PC端的前端开发 </li>
-                </ul>
-                <h3> 学生工作经历 </h3>
-                <ul>
-                    <li> ●班级组织委员、学生会干事 </li>
-                    <li> ●杭州电子科技大学图书馆管理员 </li>
-                    <li> ●杭州电子科技大学篮球裁判俱乐部裁判 </li>
-                    <li> ●杭州电子科技大学青年志愿者协会办公室部长 </li>
-                </ul>
-                <h3> 证书及获奖经历 </h3>
-                <ul>
-                    <li> ●大学英语四级证书 </li>
-                    <li> ●中国注册志愿者证书 </li>
-                    <li> ●通信工程学院学生工作奖、学习优胜奖 </li>
-                    <li> ●杭州电子科技大学青年志愿者协会优秀干事 </li>
-                </ul>
-                <h3> 自我评价 </h3>
-                <ul>
-                    <li> ●工科背景，学习和动手能力较强 </li>
-                    <li> ●成绩中上，掌握基础软硬件知识 </li>
-                    <li> ●勇于尝试，学生工作和社会实习经历丰富 </li>
-                    <li> ●性格开朗，良好的生活习惯和人际交往能力 </li>
-                    <li> ●爱好广泛，打篮球，看小说，听音乐，泡图书馆 </li>
-                    <li> ●胸怀梦想，希望这个世界因为自己的存在变得好一点 </li>
-                </ul>
-            </div>
-        </template>
-        <template id="box-template-two">
-        	<div class="details-two">
-        		<ul>
-                    <li>
-                        <p>
-                            <h3>第1个月：在校自学。</h3>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            ●零基础在W3Cschool刷html,css和js的Demo,慕课网,《javascript编程 DOM编程》入门，极简单个人简历出炉。
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <h3>第2个月到第5个月：公司实习。</h3>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            ●参与"云医疗"项目PC端和移动端的开发。
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            ●主要学习书籍：《锋利的Jquery》《javascript高级程序设计》《Bootstrap实战》和《CSS揭秘》。
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            ●大牛及框架：比如css大牛张鑫旭，神级大牛阮一峰，以及angular,react,vue框架。
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            ●主要提升技能：静态页面布局，Jquery的使用，原生JS基础，Ajax使用，less编程。
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            ●个人网站：在同事的帮助下，购买了阿里云虚拟主机和域名，拥有了第一个个人网站www.codingdemon.cn(由于未备案故使用临时域名进行调试：bxw2359160312.my3w.com)。
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <h3>第6个月：辞职回校自学。</h3>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            实习期间学不到真东西，因此选择辞职回学校自我提升。这个阶段学习了sass编程，vue入门，webpack入门和es6入门。这个个人博客就是我集中一天时间完成的。
-                        </p>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <p>
-                            <h3> 个人前端文章 </h3>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            ●个人简书文章：
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <a href="http://www.jianshu.com/p/868389ddf199">
+    </div>
+    <template id="picture">
+        <div class="picture">
+        </div>
+    </template>
+    <template id="box-template-one">
+        <div class="details-one">
+            <h3>个人信息</h3>
+            <ul>
+                <li>
+                    <p>高 凯 男  22岁  杭州 2017届本科毕业生 15988405210 gaokai20100801@qq.com</p>
+                </li>
+            </ul>
+            <h3> 教育经历 </h3>
+            <ul>
+                <li> 2010.09 - 2013.06 鄂尔多斯市第一中学（内蒙古自治区首批重点中学） </li>
+                <li> 2013.09 - 至今 杭州电子科技大学（浙江省首批重点建设的5所高校之一） 通信工程学院 本科 </li>
+            </ul>
+            <h3> 实习经历 </h3>
+            <ul>
+                <li>
+                    <p>2014年5月  - 2014年6月 </p>
+                    <p>●龙湖地产—售楼部</p>
+                </li>
+                <li>
+                    <p>2015年5月  - 2015年6月 </p>
+                    <p>●去哪儿网杭州分部—销售部</p>
+                </li>
+                <li>
+                    <p>2016年7月  - 2016年10月 </p>
+                    <p>●浙江和仁科技股份有限公司—前端开发部</p>
+                </li>
+            </ul>
+            <h3> 参与项目 </h3>
+            <ul>
+                <li> ●参与龙湖时代天街停车位售卖 </li>
+                <li> ●参与去哪儿网APP进酒店推广 </li>
+                <li> ●参与“云医疗”项目移动端和PC端的前端开发 </li>
+            </ul>
+            <h3> 学生工作经历 </h3>
+            <ul>
+                <li> ●班级组织委员、学生会干事 </li>
+                <li> ●杭州电子科技大学图书馆管理员 </li>
+                <li> ●杭州电子科技大学篮球裁判俱乐部裁判 </li>
+                <li> ●杭州电子科技大学青年志愿者协会办公室部长 </li>
+            </ul>
+            <h3> 证书及获奖经历 </h3>
+            <ul>
+                <li> ●大学英语四级证书 </li>
+                <li> ●中国注册志愿者证书 </li>
+                <li> ●通信工程学院学生工作奖、学习优胜奖 </li>
+                <li> ●杭州电子科技大学青年志愿者协会优秀干事 </li>
+            </ul>
+            <h3> 自我评价 </h3>
+            <ul>
+                <li> ●工科背景，学习和动手能力较强 </li>
+                <li> ●成绩中上，掌握基础软硬件知识 </li>
+                <li> ●勇于尝试，学生工作和社会实习经历丰富 </li>
+                <li> ●性格开朗，良好的生活习惯和人际交往能力 </li>
+                <li> ●爱好广泛，打篮球，看小说，听音乐，泡图书馆 </li>
+                <li> ●胸怀梦想，希望这个世界因为自己的存在变得好一点 </li>
+            </ul>
+        </div>
+    </template>
+    <template id="box-template-two">
+        <div class="details-two">
+            <ul>
+                <li>
+                    <p>
+                        <h3>第1个月：在校自学。</h3>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        ●零基础在W3Cschool刷html,css和js的Demo,慕课网,《javascript编程 DOM编程》入门，极简单个人简历出炉。
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <h3>第2个月到第5个月：公司实习。</h3>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        ●参与"云医疗"项目PC端和移动端的开发。
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        ●主要学习书籍：《锋利的Jquery》《javascript高级程序设计》《Bootstrap实战》和《CSS揭秘》。
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        ●大牛及框架：比如css大牛张鑫旭，神级大牛阮一峰，以及angular,react,vue框架。
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        ●主要提升技能：静态页面布局，Jquery的使用，原生JS基础，Ajax使用，less编程。
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        ●个人网站：在同事的帮助下，购买了阿里云虚拟主机和域名，拥有了第一个个人网站www.codingdemon.cn(由于未备案故使用临时域名进行调试：bxw2359160312.my3w.com)。
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <h3>第6个月：辞职回校自学。</h3>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        实习期间学不到真东西，因此选择辞职回学校自我提升。这个阶段学习了sass编程，vue入门，webpack入门和es6入门。这个个人博客就是我集中一天时间完成的。
+                    </p>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <p>
+                        <h3> 个人前端文章 </h3>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        ●个人简书文章：
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <a href="http://www.jianshu.com/p/868389ddf199">
                             经典CSS坑：如何完美实现垂直水平居中？
                             </a>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <a href="http://www.jianshu.com/p/e1e866ef3012">
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <a href="http://www.jianshu.com/p/e1e866ef3012">
                             团队各成员如何使用GitHub共同编辑文档？
                             </a>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <a href="http://www.jianshu.com/p/a324681bd82a">
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <a href="http://www.jianshu.com/p/a324681bd82a">
                             chrome黑科技插件初体验！
                             </a>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <a href="http://www.jianshu.com/p/b85ba49b15b8">
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <a href="http://www.jianshu.com/p/b85ba49b15b8">
                             CSS颜色：十六进制色，rgb()和rgba()小技巧
                             </a>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <a href="http://www.jianshu.com/p/2d51c3b215b2">
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <a href="http://www.jianshu.com/p/2d51c3b215b2">
                             简单的Canvas+Vue+Jquery动画的demo
                             </a>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <a href="http://www.jianshu.com/p/bfc86d640226">
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <a href="http://www.jianshu.com/p/bfc86d640226">
                             如何让chrome控制台支持ES6语法
                             </a>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
+                    </p>
+                </li>
+                <li>
+                    <p>
                         ●个人网站：
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <a href="http://bxw2359160312.my3w.com/">
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <a href="http://bxw2359160312.my3w.com/">
                             我的个人网站
                             </a>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
+                    </p>
+                </li>
+                <li>
+                    <p>
                         ●我的知乎：
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <a href="https://www.zhihu.com/people/ting-zhao-wu-yue-tian-da-lan-qiu">
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <a href="https://www.zhihu.com/people/ting-zhao-wu-yue-tian-da-lan-qiu">
                             我的知乎
                             </a>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
+                    </p>
+                </li>
+                <li>
+                    <p>
                         ●Github地址：
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <a href="https://github.com/FrankKai">
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <a href="https://github.com/FrankKai">
                             www.github.com/FrankKai
                             </a>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
+                    </p>
+                </li>
+                <li>
+                    <p>
                         ●Hexo博客：
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <a href="https://frankkai.github.io/">
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <a href="https://frankkai.github.io/">
                             www.frankkai.github.io
                          </a>
-                        </p>
-                    </li>
-                </ul>
-        	</div>
-        </template>
-        <template id="box-template-three">
-        	<div class="details-three">
-        		<h1>大学四年最喜欢做的事</h1>
-                <ul>
-                    <li><h3> 打篮球 </h3></li>
-                        <li><p>大学最开心的事就是篮球场打篮球，约上三五好友，打球时酣畅淋漓，激情四射，打完球浑身舒服，这时候来一罐冰镇雪碧是最爽的。</p></li>
-                    <li><h3> 玩游戏 </h3></li>
-                        <li><p>主要玩三款游戏：NBA2Konline，英雄联盟，炉石传说。毕业后准备入坑守望先锋，因为毕业前以提升前端技术为主。</p></li>
-                    <li><h3> 看小说  </h3></li>
-                        <li><p>看了30本左右吧，言情，悬疑，历史都有涉及。也看了不少日本作家写的小说，真的有毒，尤其是太宰治写的《人间失格》，整得我心情低落了一个学期，所以说还是多看一些正能量的作品比较好。</p></li>
-                   
-                    <li><h3> 听音乐 </h3>
-                        <li><p>这个习惯得改，尤其是敲代码的时候，很影响思考。闲暇之余挺音乐是不错的。</p></li>
-                    
-                    <li><h3> 泡图书馆  </h3>
-                    <li><p>图书馆是个好地方，安静，惬意，偶尔还能抬起头来看看妹子。</p></li>
-                </ul>
-        	</div>
-        </template>
-        <template id="box-template-four">
-        	<div class="details-four">
-        		<ul>
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </template>
+    <template id="box-template-three">
+        <div class="details-three">
+            <h1>大学四年最喜欢做的事</h1>
+            <ul>
+                <li>
+                    <h3> 打篮球 </h3>
+                </li>
+                <li>
+                    <p>大学最开心的事就是篮球场打篮球，约上三五好友，打球时酣畅淋漓，激情四射，打完球浑身舒服，这时候来一罐冰镇雪碧是最爽的。</p>
+                </li>
+                <li>
+                    <h3> 玩游戏 </h3>
+                </li>
+                <li>
+                    <p>主要玩三款游戏：NBA2Konline，英雄联盟，炉石传说。毕业后准备入坑守望先锋，因为毕业前以提升前端技术为主。</p>
+                </li>
+                <li>
+                    <h3> 看小说 </h3>
+                </li>
+                <li>
+                    <p>看了30本左右吧，言情，悬疑，历史都有涉及。也看了不少日本作家写的小说，真的有毒，尤其是太宰治写的《人间失格》，整得我心情低落了一个学期，所以说还是多看一些正能量的作品比较好。</p>
+                </li>
+
+                <li>
+                    <h3> 听音乐 </h3>
                     <li>
-                        <h3>vue.js</h3>
-                        <p>●声明式渲染</p>
-                        <p>●模块化思想</p>
-                        <p>●双向数据绑定</p>
+                        <p>这个习惯得改，尤其是敲代码的时候，很影响思考。闲暇之余挺音乐是不错的。</p>
                     </li>
+
                     <li>
-                        <h3>css部分</h3>
-                        <p>●css3切角</p>
-                        <p>●css3动画</p>
-                        <p>●sass结合koala实现css预编译</p>
-                    </li>
-                    <li>
-                        <h3>Jquery</h3>
-                        <p>●实现选项卡功能</p>
-                    </li>
-                    <li>
-                        <h3>配色选取</h3>
-                        <p>●http://colorhunt.co</p>
-                    </li>      
-                </ul>
-        	</div>
-        </template>
-        <script src="js/vuezujianhua.js" type="text/javascript"> </script>
-    </body>
+                        <h3> 泡图书馆 </h3>
+                        <li>
+                            <p>图书馆是个好地方，安静，惬意，偶尔还能抬起头来看看妹子。</p>
+                        </li>
+            </ul>
+        </div>
+    </template>
+    <template id="box-template-four">
+        <div class="details-four">
+            <ul>
+                <li>
+                    <h3>vue.js</h3>
+                    <p>●声明式渲染</p>
+                    <p>●模块化思想</p>
+                    <p>●双向数据绑定</p>
+                </li>
+                <li>
+                    <h3>css部分</h3>
+                    <p>●css3切角</p>
+                    <p>●css3动画</p>
+                    <p>●sass结合koala实现css预编译</p>
+                </li>
+                <li>
+                    <h3>Jquery</h3>
+                    <p>●实现选项卡功能</p>
+                </li>
+                <li>
+                    <h3>配色选取</h3>
+                    <p>●http://colorhunt.co</p>
+                </li>
+            </ul>
+        </div>
+    </template>
+    <script src="lib/vuezujianhua.js" type="text/javascript">
+    </script>
+</body>
+
 </html>

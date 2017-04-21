@@ -1,0 +1,25 @@
+{
+  "name": "fuckyou",
+  "version": "1.0.0",
+  "description": "personal-vue-practice",
+  "main": "webpack.config.js",
+  "dependencies": {},
+  "devDependencies": {
+    "css-loader": "^0.28.0",
+    "jquery": "^3.2.1",
+    "vue": "^2.2.6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FrankKai/Vue-Practice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FrankKai/Vue-Practice/issues"
+  },
+  "homepage": "https://github.com/FrankKai/Vue-Practice#readme"
+}
