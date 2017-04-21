@@ -1,0 +1,26 @@
+.content {
+	width: 80%;
+	margin-top:50px;
+	margin-left: 20%;
+	margin-bottom:50px;
+	background: rgba(0, 0, 255, .1);
+	@include beveled-corners(#A1DE93,20px,5px);
+}
+.content {
+	&>div{
+		display: none;
+	}
+	&>div.active{
+		display: block;
+	}
+	h3{
+		color:#283739;
+		padding:10px;
+		background:#F7F48B;
+		border-radius:10px;
+	}
+	li{
+		font-weight:bold;
+		color:#6C7A89;
+	}
+}

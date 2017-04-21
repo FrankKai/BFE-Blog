@@ -1,0 +1,21 @@
+.content-box-two{
+	.picture{
+		width: 100%;
+		height: 300px;
+		background: url("../images/jinjie-two.jpg") center no-repeat;
+		background-size: contain;
+		position:relative;
+		top:-280px;
+		animation: bounce 2s cubic-bezier(.1,.25,1,.25) forwards;
+	}
+	.details-two{
+		width:60%;
+		margin:auto;
+		padding-top:50px;
+		padding-bottom:50px;
+		li{
+			padding:10px;
+			font-size:$fontSize;
+		}
+	}
+}

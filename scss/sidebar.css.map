@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,QAAS;EACR,QAAQ,EAAE,KAAK;EACf,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,IAAI;EACZ,UAAU,EAAE,oBAAmB;EAC/B,UAAU,EAAE,MAAM;;AAEnB,MAAO;EACN,MAAM,EAAE,IAAI;;AAGZ,WAAG;EACF,OAAO,EAAE,IAAI",
+"sources": ["sidebar.scss"],
+"names": [],
+"file": "sidebar.css"
+}
