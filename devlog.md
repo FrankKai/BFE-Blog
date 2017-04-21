@@ -22,3 +22,4 @@ npm install css-loader --save-dev
 删除github上的文件：
 git rm -r --cached node_modules
 git commit -m "removing node_modules"
+123
