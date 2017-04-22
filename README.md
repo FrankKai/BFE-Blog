@@ -1,6 +1,5 @@
-# Vue-Practice
-　　1.重新建库，基于个人博客学vue√
-　　2.加入webpack工具√ 
+1.重新建库，基于个人博客学vue√
+2.加入webpack工具√ 
 注意：vscode中的webpack插件需要先有package.json文件才能初始化，之后再npm install。
 正确做法事：npm install webpack --save-dev
 3.webpack.config.js配置项目依赖
@@ -26,12 +25,12 @@ git rm -r --cached node_modules
 git commit -m "removing node_modules"
 git push -u origin master
 .gitignore文件
-# 以'#' 开始的行，被视为注释.
-# 忽略掉所有文件名是 foo.txt 的文件
+以'#' 开始的行，被视为注释.
+忽略掉所有文件名是 foo.txt 的文件
 . foo.txt
-# 忽略所有生成的 html 文件, *.html
-# foo.html是手工维护的，所以例外. !foo.html
-# 忽略所有.o 和 .a文件. *.[oa] 
+忽略所有生成的 html 文件, *.html
+foo.html是手工维护的，所以例外. !foo.html
+忽略所有.o 和 .a文件. *.[oa] 
 若修改大部分文件，则：
 暂时不能自动提交所有已修改文件，只有git add .并且rm node_modules cache，再commit和push。
 若修改少量文件，则：
@@ -43,11 +42,11 @@ PS： 若一开始未添加.gitignore文件且add .，注意使用git rm -r --ca
 webpack-dev-server CLI中cli是什么意思？
 command-line interface命令行界面
 babel:
-# 安装加载器 babel-loader 和 Babel 的 API 代码 babel-core
+安装加载器 babel-loader 和 Babel 的 API 代码 babel-core
 npm install --save-dev babel-loader babel-core
-# 安装 ES2015（ES6）的代码，用于转码
+安装 ES2015（ES6）的代码，用于转码
 npm install babel-preset-es2015 --save-dev
-# 用于转换一些 ES6 的新 API，如 Generator，Promise 等
+用于转换一些 ES6 的新 API，如 Generator，Promise 等
 npm install --save babel-polyfill
 npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@^1.0.0 (node_modules\chokidar\node_modules\fsevents):
 npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.1.1: wanted {"os":"darwin","arch":"any"} (current: {"
