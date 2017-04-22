@@ -1,15 +1,15 @@
 1.重新建库，基于个人博客学vue√  
 2.加入webpack工具√　　
-注意：vscode中的webpack插件需要先有package.json文件才能初始化，之后再npm install。
-正确做法事：npm install webpack --save-dev
-3.webpack.config.js配置项目依赖
-https://doc.webpack-china.org/concepts/
-①入口文件
-Array<string>字符串数组。
-添加应用程序入口和公共库入口。
-可以有多个。
-②出口文件
-有且仅有一个。
+注意：vscode中的webpack插件需要先有package.json文件才能初始化，之后再npm install。　　
+正确做法事：npm install webpack --save-dev　　
+3.webpack.config.js配置项目依赖　　
+https://doc.webpack-china.org/concepts/　　
+①入口文件　　
+Array<string>字符串数组。　　
+添加应用程序入口和公共库入口。　　
+可以有多个。　　
+②出口文件　　
+有且仅有一个。　　
 添加出口文件目录及出口文件。
 添加path时参考：http://www.jianshu.com/p/76966243f27f
 chunk的概念：
