@@ -56,3 +56,7 @@ os":"win32","arch":"x64"})
 两种方式：  
 一种添加到bundle.js  
 一种使用extract-text-webpack-plugin插件独立一个css文件出来，css文件同样在build目录下。  
+5.原页面修改为vue的模块化形式，使用vue-cli学习简单的webpack中使用vue的相关配置项。  
+参考vue-demo，将现有假vue项目修改为真vue项目。  
+之后再参照完整版vue例子 webpack 对项目进行完善。  
+额外收获：高级程序设计需要反复推敲。  
