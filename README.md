@@ -61,6 +61,7 @@ os":"win32","arch":"x64"})
 之后再参照完整版vue例子 webpack 对项目进行完善。  
 额外收获：高级程序设计需要反复推敲。  
 outputh的publicPath:
+```
 <link href="/assets/spinner.gif" />
 "/assets/", // 相对于服务(server-relative)
 支持es6的import语法
@@ -74,7 +75,9 @@ vue中的render参数
 (function (h) {
   return h(App);
 });
+```
 调用了一个名为h的函数，并且返回对App的处理结果：
+```
 var h = function(x){
 	console.log(x)
 };
@@ -83,9 +86,12 @@ var h = function(x){
 });
 console.log(h('App'));
 结果：App
+```
 https://segmentfault.com/q/1010000007130348
+```
 render: function (createElement){
     return createElement(app);
 }
+```
 可见，在vuejs中，h函数仅是作为createElement函数之缩写
 vue-loader研究单文件组件
