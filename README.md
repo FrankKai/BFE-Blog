@@ -76,7 +76,7 @@ vue中的render参数
   return h(App);
 });
 ```
-调用了一个名为h的函数，并且返回对App的处理结果：
+调用了一个名为h的函数，并且返回对App的处理结果：  
 ```
 var h = function(x){
 	console.log(x)
@@ -93,5 +93,43 @@ render: function (createElement){
     return createElement(app);
 }
 ```
-可见，在vuejs中，h函数仅是作为createElement函数之缩写
-vue-loader研究单文件组件
+可见，在vuejs中，h函数仅是作为createElement函数之缩写  
+vue-loader研究单文件组件  
+http://www.jianshu.com/p/00ee4e45c0cd  
+http://davidbcalhoun.com/2014/what-is-amd-commonjs-and-umd/  
+
+下午研究vue-loader加载单文件组件的整个流程一直到现在，整个人精神失常...
+成果贴上来：
+segmentfaule的自问自答：
+https://segmentfault.com/q/1010000009172533/a-1020000009180397
+参考ECMAScript2015官方对Imports的定义:
+[15.2.2.4 Static Semantics: ImportEntriesForModule](http://www.ecma-international.org/ecma-262/6.0/#sec-static-semantics-importentriesformodule)
+
+    ImportedDefaultBinding : ImportedBinding
+    Let localName be the sole element of BoundNames of ImportedBinding.
+    Let defaultEntry be the Record {[[ModuleRequest]]: module, [[ImportName]]: "default", [[LocalName]]: localName }.
+    Return a new List containing defaultEntry.
+
+现在分析下面这行代码：
+
+    import App from './App.vue'
+
+这里的App是localName（main.js文件中的局部对象），而localName成为ImportedBinding的BoundNames的唯一元素，从而将App唯一绑定到main.js中。
+因为官方说明from后面跟的是ModuleSpecifier（模块说明符），一般情况直接写module文件名或者写.js文件的路径。为了使得单文件组件.vue也可以被导入，有了vue-loader。
+即这行代码的完整意思是：使用vue-loader对App.vue进行加载，返回结果是1个object(亲测结果)，这个过程用到了vue-loader，然后为它取一个localName，它唯一作用于当前main.js中。
+那么，这个下面这行代码的意思
+
+    import Vue from 'vue'
+
+导入node_modules下的vue模块中的vue.js的Vue$3构造函数到main.js中，而Vue$3构造函数在vue.js中对应的就是创建实例的构造函数Vue()，可以为Vue()构造函数设置localName为Vue或其他（亲测有效）。
+所以，这个问题的根源是没有对ImportClause和FromClause有深刻的理解以及vue-loader加载vue单文件组件的工作原理。
+
+所以，这段代码的意思是：
+导入Vue()构造函数，导入vue-loader处理后的App.vue文件产生的object。
+使用new操作符创建实例，将导入的object传入h函数（是vue.js自带的createElement函数的，h是一种简写），实现页面渲染。
+
+不知道理解的对不对，第一次接触ECMAScript2015规范和vue.js源码，头很大，暂时这么理解吧...
+研究过程中发现，
+1. .vue文件中的template标签的id，必须和index.html页面中的id相同
+2. 最后的结果会有几个专门的vue文件，加载template，加载style（编译scss），加载编译后的css到index.html等等，而且在每个.vue文件下面，都会有对应的webpack注释，告诉我们使用了什么loader
+3. 浏览器目录也值得研
