@@ -11,20 +11,27 @@ const config = {
     filename: 'bundle.js'
   },
   module: {
-    rules: [{
-        test: /\.scss$/,
-        use: extractSASS.extract({
-        //   {
-        //     loader: "style-loader" // 从JS字符串生成样式节点
-        // }, {
-        //     loader: "css-loader" // 将CSS转化成CommonJS
-        // }, {
-        //     loader: "sass-loader" // 将Sass编译成CSS
-        // }
-          fallback: 'style-loader',
-          use: ["css-loader",'sass-loader']
-        })
-    }]
+    rules: [
+      {
+          test: /\.scss$/,
+          use: extractSASS.extract({
+          //   {
+          //     loader: "style-loader" // 从JS字符串生成样式节点
+          // }, {
+          //     loader: "css-loader" // 将CSS转化成CommonJS
+          // }, {
+          //     loader: "sass-loader" // 将Sass编译成CSS
+          // }
+            fallback: 'style-loader',
+            use: ["css-loader",'sass-loader']
+          })
+      },
+      {
+          test: /.js$/,
+          loader: 'babel-loader',
+          exclude: /node_modules/
+      }
+      ]
   },
   plugins: [
     extractSASS
@@ -51,3 +58,4 @@ const config = {
   // devtool: 'source-map'
 };
 module.exports = config;
+console.log('kai');
