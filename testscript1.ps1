@@ -1,0 +1,2 @@
+echo fuck
+pause
