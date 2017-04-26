@@ -132,4 +132,7 @@ https://segmentfault.com/q/1010000009172533/a-1020000009180397
 研究过程中发现，
 1. .vue文件中的template标签的id，必须和index.html页面中的id相同
 2. 最后的结果会有几个专门的vue文件，加载template，加载style（编译scss），加载编译后的css到index.html等等，而且在每个.vue文件下面，都会有对应的webpack注释，告诉我们使用了什么loader
-3. 浏览器目录也值得研
+3. 浏览器目录也值得研究
+
+解决了cnpm全局安装问题：
+https://segmentfault.com/q/1010000009166404/a-1020000009187068
