@@ -1,8 +1,8 @@
-1.重新建库，基于个人博客学vue√  
-2.加入webpack工具√  
+**1.重新建库，基于个人博客学vue√**  
+**2.加入webpack工具√**  
 注意：vscode中的webpack插件需要先有package.json文件才能初始化，之后再npm install  
 正确做法事：`npm install webpack --save-dev`  
-3.webpack.config.js配置项目依赖  
+**3.webpack.config.js配置项目依赖**  
 https://doc.webpack-china.org/concepts/  
 ①入口文件  
 Array<string>字符串数组。  
@@ -42,7 +42,7 @@ git push -u origin master
    
 新的解决方案： .gitignore 文件中 忽略目录时 需要加反斜杠 例如 node_modules/  
 PS： 若一开始未添加.gitignore文件且add .，注意使用`git rm -r --cached` .清除缓存，否则`add .` 会将node_modules文件加载进来。  
-4.插件是对loader的support  
+**4.插件是对loader的support**  
 webpack-dev-server CLI中cli是什么意思？  
 command-line interface命令行界面  
 babel:  
@@ -64,7 +64,7 @@ os":"win32","arch":"x64"})
 两种方式：  
 一种添加到bundle.js  
 一种使用extract-text-webpack-plugin插件独立一个css文件出来，css文件同样在build目录下。  
-5.原页面修改为vue的模块化形式，使用vue-cli学习简单的webpack中使用vue的相关配置项。  
+5.原页面修改为vue的模块化形式，**使用vue-cli学习简单的webpack中使用vue的相关配置项**。  
 参考vue-demo，将现有假vue项目修改为真vue项目。  
 之后再参照完整版vue例子 webpack 对项目进行完善。  
 额外收获：高级程序设计需要反复推敲。  
@@ -149,7 +149,7 @@ https://segmentfault.com/q/1010000009172533/a-1020000009180397
 2. 最后的结果会有几个专门的vue文件，加载template，加载style（编译scss），加载编译后的css到index.html等等，而且在每个.vue文件下面，都会有对应的webpack注释，告诉我们使用了什么loader
 3. 浏览器目录也值得研究
 
-2017年4月25日
+2017年4月25日：  
 今天主要解决了npm全局安装权限的问题：  
 别人都是点到为止，只好自问自答，学到很多  
 https://segmentfault.com/q/1010000009166404/a-1020000009187068  
