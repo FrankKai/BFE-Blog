@@ -64,7 +64,7 @@ os":"win32","arch":"x64"})
 两种方式：  
 一种添加到bundle.js  
 一种使用extract-text-webpack-plugin插件独立一个css文件出来，css文件同样在build目录下。  
-5.原页面修改为vue的模块化形式，**使用vue-cli学习简单的webpack中使用vue的相关配置项**。  
+**5.原页面修改为vue的模块化形式，使用vue-cli学习简单的webpack中使用vue的相关配置项**。  
 参考vue-demo，将现有假vue项目修改为真vue项目。  
 之后再参照完整版vue例子 webpack 对项目进行完善。  
 额外收获：高级程序设计需要反复推敲。  
@@ -109,7 +109,7 @@ render: function (createElement){
 }
 ```
 可见，在vuejs中，h函数仅是作为createElement函数之缩写  
-vue-loader研究单文件组件  
+**6.vue-loader研究单文件组件**  
 http://www.jianshu.com/p/00ee4e45c0cd  
 http://davidbcalhoun.com/2014/what-is-amd-commonjs-and-umd/  
 
