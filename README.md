@@ -157,5 +157,5 @@ https://segmentfault.com/q/1010000009166404/a-1020000009187068
 
 2017年4月26日
 1. 腾讯云服务器30天免费使用权get
-2.  采用WinScp作为linux桌面环境的替代方案
-3.  由于身体原因，下午研究如何让readme.md美观以及在服务器安装express环境
+2. 用WinScp作为linux桌面环境的替代方案
+3. 由于身体原因，下午研究如何让readme.md美观以及在服务器安装express环境

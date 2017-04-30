@@ -15,9 +15,11 @@
     "sass-loader": "^6.0.3",
     "scss-loader": "^0.0.1",
     "style-loader": "^0.16.1",
-    "vue": "^2.2.6",
+    "vue": "^2.3.0",
     "vue-cli": "^2.8.1",
-    "vue-loader": "^11.3.4"
+    "vue-loader": "^11.3.4",
+    "vue-router": "^2.5.2",
+    "vue-template-compiler": "^2.3.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
