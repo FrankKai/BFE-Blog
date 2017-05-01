@@ -7,12 +7,12 @@
 	@include beveled-corners(#A1DE93,20px,5px);
 }
 .content {
-	&>div{
-		display: none;
-	}
-	&>div.active{
-		display: block;
-	}
+	// &>div{
+	// 	display: none;
+	// }
+	// &>div.active{
+	// 	display: block;
+	// }
 	h3{
 		color:#283739;
 		padding:10px;

@@ -1,5 +1,6 @@
 <template id="box-template-three">
     <div class="details-three">
+        <div class="picture"></div>
         <h1>大学四年最喜欢做的事</h1>
         <ul>
             <li>
@@ -35,29 +36,30 @@
         </ul>
     </div>
 </template>
+
 <style lang="scss">
-.content-box-three{
-    .picture{
-        width: 100%;
-        height: 300px;
-        // background: url("./images/201610170737211000.jpg") center no-repeat;
-        background-size: contain;
-        position:relative;
-        top:-280px;
-        animation: bounce 2s cubic-bezier(.1,.25,1,.25) forwards;
-    }
-    .details-three{
-        width:60%;
-        margin:auto;
-        padding-top:50px;
-        padding-bottom:50px;
-        li{
-            padding:10px;
-            font-size:20px;
-            p{
-                text-indent:40px;
-            }
-        }
-    }
-}
+// .content-box-three{
+//     .picture{
+//         width: 100%;
+//         height: 300px;
+//         // background: url("./images/201610170737211000.jpg") center no-repeat;
+//         background-size: contain;
+//         position:relative;
+//         top:-280px;
+//         animation: bounce 2s cubic-bezier(.1,.25,1,.25) forwards;
+//     }
+//     .details-three{
+//         width:60%;
+//         margin:auto;
+//         padding-top:50px;
+//         padding-bottom:50px;
+//         li{
+//             padding:10px;
+//             font-size:20px;
+//             p{
+//                 text-indent:40px;
+//             }
+//         }
+//     }
+// }
 </style>

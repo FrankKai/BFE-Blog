@@ -1,7 +1,7 @@
 const path = require('path');
 var webpack = require('webpack')
-// const ExtractTextPlugin = require("extract-text-webpack-plugin");
-// const extractSASS = new ExtractTextPlugin('main.css');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const extractSASS = new ExtractTextPlugin('main.css');
 const config = {
   entry: {
     app: './src/main.js'
@@ -13,20 +13,20 @@ const config = {
   },
   module: {
     rules: [
-      // {
-      //     test: /\.scss$/,
-      //     use: extractSASS.extract({
-      //     //   {
-      //     //     loader: "style-loader" // 从JS字符串生成样式节点
-      //     // }, {
-      //     //     loader: "css-loader" // 将CSS转化成CommonJS
-      //     // }, {
-      //     //     loader: "sass-loader" // 将Sass编译成CSS
-      //     // }
-      //       fallback: 'style-loader',
-      //       use: ["css-loader",'sass-loader']
-      //     })
-      // },
+      {
+          test: /\.scss$/,
+          use: extractSASS.extract({
+          //   {
+          //     loader: "style-loader" // 从JS字符串生成样式节点
+          // }, {
+          //     loader: "css-loader" // 将CSS转化成CommonJS
+          // }, {
+          //     loader: "sass-loader" // 将Sass编译成CSS
+          // }
+            fallback: 'style-loader',
+            use: ["css-loader",'sass-loader']
+          })
+      },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -41,19 +41,23 @@ const config = {
           test: /.js$/,
           loader: 'babel-loader',
           exclude: /node_modules/
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]?[hash]'
+        }
+      },
+      {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
       }
-      // {
-      //   test: /\.(png|jpg|gif|svg)$/,
-      //   loader: 'file-loader',
-      //   options: {
-      //     name: '[name].[ext]?[hash]'
-      //   }
-      // }
       ]
   },
-  // plugins: [
-  //   extractSASS
-  // ]
+  plugins: [
+    extractSASS
+  ]
   // module: {
   //   rules: [{
   //     test: /.jsx?$/,
@@ -79,4 +83,4 @@ const config = {
   // }
 };
 module.exports = config;
-console.log('kai');
+console.log('kaibaba的vue博客正在构建，请耐心等待...');

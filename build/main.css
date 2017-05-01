@@ -69,12 +69,6 @@ ul {
   background-size: 51% 51%;
   background-repeat: no-repeat; }
 
-.content > div {
-  display: none; }
-
-.content > div.active {
-  display: block; }
-
 .content h3 {
   color: #283739;
   padding: 10px;
@@ -85,67 +79,68 @@ ul {
   font-weight: bold;
   color: #6C7A89; }
 
-.content-box-one .picture {
-  width: 100%;
-  height: 240px;
-  background-size: contain;
-  position: relative;
-  top: -280px;
-  animation: bounce 2s cubic-bezier(0.1, 0.25, 1, 0.25) forwards; }
-
-.content-box-one .details-one {
+.details-one {
   width: 60%;
   margin: auto;
   padding: 50px; }
 
-.content-box-one .details-one li {
+.details-one li {
   padding: 5px;
   font-size: 20px; }
 
-.content-box-one .details-one h1 {
+.details-one h1 {
   padding: 10px 0; }
 
-.content-box-two .picture {
+.details-one .picture {
   width: 100%;
-  height: 300px;
+  height: 240px;
+  background: url(ec293c9342dadd00609c27629389c7c0.jpg?a791c1228219dd09285d91a3dca2b639) center no-repeat;
   background-size: contain;
   position: relative;
   top: -280px;
   animation: bounce 2s cubic-bezier(0.1, 0.25, 1, 0.25) forwards; }
 
-.content-box-two .details-two {
+.details-two {
   width: 60%;
   margin: auto;
   padding-top: 50px;
   padding-bottom: 50px; }
-  .content-box-two .details-two li {
+  .details-two li {
     padding: 10px;
     font-size: 20px; }
+  .details-two .picture {
+    width: 100%;
+    height: 300px;
+    background: url(jinjie-two.jpg?fab79c57aeb1cdb0d080214cf884449c) center no-repeat;
+    background-size: contain;
+    position: relative;
+    top: -280px;
+    animation: bounce 2s cubic-bezier(0.1, 0.25, 1, 0.25) forwards; }
 
-.content-box-three .picture {
-  width: 100%;
-  height: 300px;
-  background-size: contain;
-  position: relative;
-  top: -280px;
-  animation: bounce 2s cubic-bezier(0.1, 0.25, 1, 0.25) forwards; }
-
-.content-box-three .details-three {
+.details-three {
   width: 60%;
   margin: auto;
   padding-top: 50px;
   padding-bottom: 50px; }
-  .content-box-three .details-three li {
+  .details-three li {
     padding: 10px;
     font-size: 20px; }
-    .content-box-three .details-three li p {
+    .details-three li p {
       text-indent: 40px; }
+  .details-three .picture {
+    width: 100%;
+    height: 300px;
+    background: url(201610170737211000.jpg?e7b6e509e05423c780643910a609edec) center no-repeat;
+    background-size: contain;
+    position: relative;
+    top: -280px;
+    animation: bounce 2s cubic-bezier(0.1, 0.25, 1, 0.25) forwards; }
 
-.content-box-four .details-four {
+.details-four {
   width: 60%;
   margin: auto;
   padding-top: 50px;
   padding-bottom: 50px; }
-  .content-box-four .details-four li {
+  .details-four li {
     padding: 10px;
     font-size: 20px; }

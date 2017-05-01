@@ -1,5 +1,6 @@
 <template id="box-template-one">
     <div class="details-one">
+        <div class="picture"></div>
         <h3>个人信息</h3>
         <ul>
             <li>
@@ -58,30 +59,30 @@
     </div>
 </template>
 <style lang="scss">
-.content-box-one{
-    .picture {
-        width: 100%;
-        height: 240px;
-        // background: url("./images/ec293c9342dadd00609c27629389c7c0.jpg") center no-repeat;
-        background-size: contain;
-        position:relative;
-        top:-280px;
-        animation: bounce 2s cubic-bezier(.1,.25,1,.25) forwards;
-    }
-    .details-one{
-        &{
-            width:60%;
-            margin:auto;
-            padding:50px;
-        }
-        li{
-            padding:5px;
-            // font-size:$fontSize;
+// .content-box-one{
+//     .picture {
+//         width: 100%;
+//         height: 240px;
+//         // background: url("./images/ec293c9342dadd00609c27629389c7c0.jpg") center no-repeat;
+//         background-size: contain;
+//         position:relative;
+//         top:-280px;
+//         animation: bounce 2s cubic-bezier(.1,.25,1,.25) forwards;
+//     }
+//     .details-one{
+//         &{
+//             width:60%;
+//             margin:auto;
+//             padding:50px;
+//         }
+//         li{
+//             padding:5px;
+//             // font-size:$fontSize;
 
-        }
-        h1{
-            padding:10px 0;
-        }
-    }
-}
+//         }
+//         h1{
+//             padding:10px 0;
+//         }
+//     }
+// }
 </style>

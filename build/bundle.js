@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 18);
+/******/ 	return __webpack_require__(__webpack_require__.s = 26);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -127,6 +127,88 @@ module.exports = function normalizeComponent (
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
+/* WEBPACK VAR INJECTION */(function(Buffer) {/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap) {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+  var base64 = new Buffer(JSON.stringify(sourceMap)).toString('base64');
+  var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+  return '/*# ' + data + ' */';
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(28).Buffer))
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
 /*
   MIT License http://www.opensource.org/licenses/mit-license.php
   Author Tobias Koppers @sokra
@@ -143,7 +225,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(16)
+var listToStyles = __webpack_require__(24)
 
 /*
 type StyleObject = {
@@ -343,88 +425,6 @@ function applyToTag (styleElement, obj) {
   }
 }
 
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(Buffer) {/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap) {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-  var base64 = new Buffer(JSON.stringify(sourceMap)).toString('base64');
-  var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-  return '/*# ' + data + ' */';
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20).Buffer))
 
 /***/ }),
 /* 3 */
@@ -643,15 +643,41 @@ module.exports = g;
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(33);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(14)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../css-loader/index.js!./normalize.css", function() {
+			var newContent = require("!!../css-loader/index.js!./normalize.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
 
 /* styles */
-__webpack_require__(13)
+__webpack_require__(21)
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(17),
+  __webpack_require__(25),
   /* template */
-  __webpack_require__(10),
+  __webpack_require__(18),
   /* scopeId */
   null,
   /* cssModules */
@@ -678,18 +704,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(14)
+__webpack_require__(22)
 
 var Component = __webpack_require__(0)(
   /* script */
   null,
   /* template */
-  __webpack_require__(11),
+  __webpack_require__(19),
   /* scopeId */
   null,
   /* cssModules */
@@ -716,18 +742,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(15)
+__webpack_require__(23)
 
 var Component = __webpack_require__(0)(
   /* script */
   null,
   /* template */
-  __webpack_require__(12),
+  __webpack_require__(20),
   /* scopeId */
   null,
   /* cssModules */
@@ -754,7 +780,81 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 8 */
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  null,
+  /* template */
+  __webpack_require__(16),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "C:\\Users\\GaoKai\\Desktop\\fuckyou\\src\\components\\test1.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] test1.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1b7b7566", Component.options)
+  } else {
+    hotAPI.reload("data-v-1b7b7566", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  null,
+  /* template */
+  __webpack_require__(17),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "C:\\Users\\GaoKai\\Desktop\\fuckyou\\src\\components\\test2.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] test2.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1b898ce7", Component.options)
+  } else {
+    hotAPI.reload("data-v-1b898ce7", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7844,7 +7944,7 @@ setTimeout(function () {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(4)))
 
 /***/ }),
-/* 9 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10312,7 +10412,480 @@ if (inBrowser && window.Vue) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3)))
 
 /***/ }),
-/* 10 */
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+var stylesInDom = {},
+	memoize = function(fn) {
+		var memo;
+		return function () {
+			if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+			return memo;
+		};
+	},
+	isOldIE = memoize(function() {
+		// Test for IE <= 9 as proposed by Browserhacks
+		// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+		// Tests for existence of standard globals is to allow style-loader 
+		// to operate correctly into non-standard environments
+		// @see https://github.com/webpack-contrib/style-loader/issues/177
+		return window && document && document.all && !window.atob;
+	}),
+	getElement = (function(fn) {
+		var memo = {};
+		return function(selector) {
+			if (typeof memo[selector] === "undefined") {
+				memo[selector] = fn.call(this, selector);
+			}
+			return memo[selector]
+		};
+	})(function (styleTarget) {
+		return document.querySelector(styleTarget)
+	}),
+	singletonElement = null,
+	singletonCounter = 0,
+	styleElementsInsertedAtTop = [],
+	fixUrls = __webpack_require__(15);
+
+module.exports = function(list, options) {
+	if(typeof DEBUG !== "undefined" && DEBUG) {
+		if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+	}
+
+	options = options || {};
+	options.attrs = typeof options.attrs === "object" ? options.attrs : {};
+
+	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+	// tags it will allow on a page
+	if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+
+	// By default, add <style> tags to the <head> element
+	if (typeof options.insertInto === "undefined") options.insertInto = "head";
+
+	// By default, add <style> tags to the bottom of the target
+	if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+
+	var styles = listToStyles(list);
+	addStylesToDom(styles, options);
+
+	return function update(newList) {
+		var mayRemove = [];
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			domStyle.refs--;
+			mayRemove.push(domStyle);
+		}
+		if(newList) {
+			var newStyles = listToStyles(newList);
+			addStylesToDom(newStyles, options);
+		}
+		for(var i = 0; i < mayRemove.length; i++) {
+			var domStyle = mayRemove[i];
+			if(domStyle.refs === 0) {
+				for(var j = 0; j < domStyle.parts.length; j++)
+					domStyle.parts[j]();
+				delete stylesInDom[domStyle.id];
+			}
+		}
+	};
+};
+
+function addStylesToDom(styles, options) {
+	for(var i = 0; i < styles.length; i++) {
+		var item = styles[i];
+		var domStyle = stylesInDom[item.id];
+		if(domStyle) {
+			domStyle.refs++;
+			for(var j = 0; j < domStyle.parts.length; j++) {
+				domStyle.parts[j](item.parts[j]);
+			}
+			for(; j < item.parts.length; j++) {
+				domStyle.parts.push(addStyle(item.parts[j], options));
+			}
+		} else {
+			var parts = [];
+			for(var j = 0; j < item.parts.length; j++) {
+				parts.push(addStyle(item.parts[j], options));
+			}
+			stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+		}
+	}
+}
+
+function listToStyles(list) {
+	var styles = [];
+	var newStyles = {};
+	for(var i = 0; i < list.length; i++) {
+		var item = list[i];
+		var id = item[0];
+		var css = item[1];
+		var media = item[2];
+		var sourceMap = item[3];
+		var part = {css: css, media: media, sourceMap: sourceMap};
+		if(!newStyles[id])
+			styles.push(newStyles[id] = {id: id, parts: [part]});
+		else
+			newStyles[id].parts.push(part);
+	}
+	return styles;
+}
+
+function insertStyleElement(options, styleElement) {
+	var styleTarget = getElement(options.insertInto)
+	if (!styleTarget) {
+		throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
+	}
+	var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+	if (options.insertAt === "top") {
+		if(!lastStyleElementInsertedAtTop) {
+			styleTarget.insertBefore(styleElement, styleTarget.firstChild);
+		} else if(lastStyleElementInsertedAtTop.nextSibling) {
+			styleTarget.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+		} else {
+			styleTarget.appendChild(styleElement);
+		}
+		styleElementsInsertedAtTop.push(styleElement);
+	} else if (options.insertAt === "bottom") {
+		styleTarget.appendChild(styleElement);
+	} else {
+		throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+	}
+}
+
+function removeStyleElement(styleElement) {
+	styleElement.parentNode.removeChild(styleElement);
+	var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+	if(idx >= 0) {
+		styleElementsInsertedAtTop.splice(idx, 1);
+	}
+}
+
+function createStyleElement(options) {
+	var styleElement = document.createElement("style");
+	options.attrs.type = "text/css";
+
+	attachTagAttrs(styleElement, options.attrs);
+	insertStyleElement(options, styleElement);
+	return styleElement;
+}
+
+function createLinkElement(options) {
+	var linkElement = document.createElement("link");
+	options.attrs.type = "text/css";
+	options.attrs.rel = "stylesheet";
+
+	attachTagAttrs(linkElement, options.attrs);
+	insertStyleElement(options, linkElement);
+	return linkElement;
+}
+
+function attachTagAttrs(element, attrs) {
+	Object.keys(attrs).forEach(function (key) {
+		element.setAttribute(key, attrs[key]);
+	});
+}
+
+function addStyle(obj, options) {
+	var styleElement, update, remove;
+
+	if (options.singleton) {
+		var styleIndex = singletonCounter++;
+		styleElement = singletonElement || (singletonElement = createStyleElement(options));
+		update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+		remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+	} else if(obj.sourceMap &&
+		typeof URL === "function" &&
+		typeof URL.createObjectURL === "function" &&
+		typeof URL.revokeObjectURL === "function" &&
+		typeof Blob === "function" &&
+		typeof btoa === "function") {
+		styleElement = createLinkElement(options);
+		update = updateLink.bind(null, styleElement, options);
+		remove = function() {
+			removeStyleElement(styleElement);
+			if(styleElement.href)
+				URL.revokeObjectURL(styleElement.href);
+		};
+	} else {
+		styleElement = createStyleElement(options);
+		update = applyToTag.bind(null, styleElement);
+		remove = function() {
+			removeStyleElement(styleElement);
+		};
+	}
+
+	update(obj);
+
+	return function updateStyle(newObj) {
+		if(newObj) {
+			if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+				return;
+			update(obj = newObj);
+		} else {
+			remove();
+		}
+	};
+}
+
+var replaceText = (function () {
+	var textStore = [];
+
+	return function (index, replacement) {
+		textStore[index] = replacement;
+		return textStore.filter(Boolean).join('\n');
+	};
+})();
+
+function applyToSingletonTag(styleElement, index, remove, obj) {
+	var css = remove ? "" : obj.css;
+
+	if (styleElement.styleSheet) {
+		styleElement.styleSheet.cssText = replaceText(index, css);
+	} else {
+		var cssNode = document.createTextNode(css);
+		var childNodes = styleElement.childNodes;
+		if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+		if (childNodes.length) {
+			styleElement.insertBefore(cssNode, childNodes[index]);
+		} else {
+			styleElement.appendChild(cssNode);
+		}
+	}
+}
+
+function applyToTag(styleElement, obj) {
+	var css = obj.css;
+	var media = obj.media;
+
+	if(media) {
+		styleElement.setAttribute("media", media)
+	}
+
+	if(styleElement.styleSheet) {
+		styleElement.styleSheet.cssText = css;
+	} else {
+		while(styleElement.firstChild) {
+			styleElement.removeChild(styleElement.firstChild);
+		}
+		styleElement.appendChild(document.createTextNode(css));
+	}
+}
+
+function updateLink(linkElement, options, obj) {
+	var css = obj.css;
+	var sourceMap = obj.sourceMap;
+
+	/* If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
+	and there is no publicPath defined then lets turn convertToAbsoluteUrls
+	on by default.  Otherwise default to the convertToAbsoluteUrls option
+	directly
+	*/
+	var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
+
+	if (options.convertToAbsoluteUrls || autoFixUrls){
+		css = fixUrls(css);
+	}
+
+	if(sourceMap) {
+		// http://stackoverflow.com/a/26603875
+		css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+	}
+
+	var blob = new Blob([css], { type: "text/css" });
+
+	var oldSrc = linkElement.href;
+
+	linkElement.href = URL.createObjectURL(blob);
+
+	if(oldSrc)
+		URL.revokeObjectURL(oldSrc);
+}
+
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports) {
+
+
+/**
+ * When source maps are enabled, `style-loader` uses a link element with a data-uri to
+ * embed the css on the page. This breaks all relative urls because now they are relative to a
+ * bundle instead of the current page.
+ *
+ * One solution is to only use full urls, but that may be impossible.
+ *
+ * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
+ *
+ * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
+ *
+ */
+
+module.exports = function (css) {
+  // get current location
+  var location = typeof window !== "undefined" && window.location;
+
+  if (!location) {
+    throw new Error("fixUrls requires window.location");
+  }
+
+	// blank or null?
+	if (!css || typeof css !== "string") {
+	  return css;
+  }
+
+  var baseUrl = location.protocol + "//" + location.host;
+  var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
+
+	// convert each url(...)
+	/*
+	This regular expression is just a way to recursively match brackets within
+	a string.
+
+	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
+	   (  = Start a capturing group
+	     (?:  = Start a non-capturing group
+	         [^)(]  = Match anything that isn't a parentheses
+	         |  = OR
+	         \(  = Match a start parentheses
+	             (?:  = Start another non-capturing groups
+	                 [^)(]+  = Match anything that isn't a parentheses
+	                 |  = OR
+	                 \(  = Match a start parentheses
+	                     [^)(]*  = Match anything that isn't a parentheses
+	                 \)  = Match a end parentheses
+	             )  = End Group
+              *\) = Match anything and then a close parens
+          )  = Close non-capturing group
+          *  = Match anything
+       )  = Close capturing group
+	 \)  = Match a close parens
+
+	 /gi  = Get all matches, not the first.  Be case insensitive.
+	 */
+	var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
+		// strip quotes (if they exist)
+		var unquotedOrigUrl = origUrl
+			.trim()
+			.replace(/^"(.*)"$/, function(o, $1){ return $1; })
+			.replace(/^'(.*)'$/, function(o, $1){ return $1; });
+
+		// already a full url? no change
+		if (/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/)/i.test(unquotedOrigUrl)) {
+		  return fullMatch;
+		}
+
+		// convert the url to a full url
+		var newUrl;
+
+		if (unquotedOrigUrl.indexOf("//") === 0) {
+		  	//TODO: should we add protocol?
+			newUrl = unquotedOrigUrl;
+		} else if (unquotedOrigUrl.indexOf("/") === 0) {
+			// path should be relative to the base url
+			newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
+		} else {
+			// path should be relative to current directory
+			newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
+		}
+
+		// send back the fixed url(...)
+		return "url(" + JSON.stringify(newUrl) + ")";
+	});
+
+	// send back the fixed css
+	return fixedCss;
+};
+
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "details-two"
+  }, [_c('div', {
+    staticClass: "picture"
+  }), _vm._v(" "), _c('ul', [_c('li', [_c('p'), _c('h3', [_vm._v("第1个月：在校自学。")]), _vm._v(" "), _c('p')]), _vm._v(" "), _c('li', [_c('p', [_vm._v("\n                ●零基础在W3Cschool刷html,css和js的Demo,慕课网,《javascript编程 DOM编程》入门，极简单个人简历出炉。\n            ")])]), _vm._v(" "), _c('li', [_c('p'), _c('h3', [_vm._v("第2个月到第5个月：公司实习。")]), _vm._v(" "), _c('p')]), _vm._v(" "), _c('li', [_c('p', [_vm._v("\n                ●参与\"云医疗\"项目PC端和移动端的开发。\n            ")])]), _vm._v(" "), _c('li', [_c('p', [_vm._v("\n                ●主要学习书籍：《锋利的Jquery》《javascript高级程序设计》《Bootstrap实战》和《CSS揭秘》。\n            ")])]), _vm._v(" "), _c('li', [_c('p', [_vm._v("\n                ●大牛及框架：比如css大牛张鑫旭，神级大牛阮一峰，以及angular,react,vue框架。\n            ")])]), _vm._v(" "), _c('li', [_c('p', [_vm._v("\n                ●主要提升技能：静态页面布局，Jquery的使用，原生JS基础，Ajax使用，less编程。\n            ")])]), _vm._v(" "), _c('li', [_c('p', [_vm._v("\n                ●个人网站：在同事的帮助下，购买了阿里云虚拟主机和域名，拥有了第一个个人网站www.codingdemon.cn(由于未备案故使用临时域名进行调试：bxw2359160312.my3w.com)。\n            ")])]), _vm._v(" "), _c('li', [_c('p'), _c('h3', [_vm._v("第6个月：辞职回校自学。")]), _vm._v(" "), _c('p')]), _vm._v(" "), _c('li', [_c('p', [_vm._v("\n                实习期间学不到真东西，因此选择辞职回学校自我提升。这个阶段学习了sass编程，vue入门，webpack入门和es6入门。这个个人博客就是我集中一天时间完成的。\n            ")])])]), _vm._v(" "), _c('ul', [_c('li', [_c('p'), _c('h3', [_vm._v(" 个人前端文章 ")]), _vm._v(" "), _c('p')]), _vm._v(" "), _c('li', [_c('p', [_vm._v("\n                ●个人简书文章：\n            ")])]), _vm._v(" "), _c('li', [_c('p', [_c('a', {
+    attrs: {
+      "href": "http://www.jianshu.com/p/868389ddf199"
+    }
+  }, [_vm._v("\n                    经典CSS坑：如何完美实现垂直水平居中？\n                    ")])])]), _vm._v(" "), _c('li', [_c('p', [_c('a', {
+    attrs: {
+      "href": "http://www.jianshu.com/p/e1e866ef3012"
+    }
+  }, [_vm._v("\n                    团队各成员如何使用GitHub共同编辑文档？\n                    ")])])]), _vm._v(" "), _c('li', [_c('p', [_c('a', {
+    attrs: {
+      "href": "http://www.jianshu.com/p/a324681bd82a"
+    }
+  }, [_vm._v("\n                    chrome黑科技插件初体验！\n                    ")])])]), _vm._v(" "), _c('li', [_c('p', [_c('a', {
+    attrs: {
+      "href": "http://www.jianshu.com/p/b85ba49b15b8"
+    }
+  }, [_vm._v("\n                    CSS颜色：十六进制色，rgb()和rgba()小技巧\n                    ")])])]), _vm._v(" "), _c('li', [_c('p', [_c('a', {
+    attrs: {
+      "href": "http://www.jianshu.com/p/2d51c3b215b2"
+    }
+  }, [_vm._v("\n                    简单的Canvas+Vue+Jquery动画的demo\n                    ")])])]), _vm._v(" "), _c('li', [_c('p', [_c('a', {
+    attrs: {
+      "href": "http://www.jianshu.com/p/bfc86d640226"
+    }
+  }, [_vm._v("\n                    如何让chrome控制台支持ES6语法\n                    ")])])]), _vm._v(" "), _c('li', [_c('p', [_vm._v("\n                ●个人网站：\n            ")])]), _vm._v(" "), _c('li', [_c('p', [_c('a', {
+    attrs: {
+      "href": "http://bxw2359160312.my3w.com/"
+    }
+  }, [_vm._v("\n                    我的个人网站\n                    ")])])]), _vm._v(" "), _c('li', [_c('p', [_vm._v("\n                ●我的知乎：\n            ")])]), _vm._v(" "), _c('li', [_c('p', [_c('a', {
+    attrs: {
+      "href": "https://www.zhihu.com/people/ting-zhao-wu-yue-tian-da-lan-qiu"
+    }
+  }, [_vm._v("\n                    我的知乎\n                    ")])])]), _vm._v(" "), _c('li', [_c('p', [_vm._v("\n                ●Github地址：\n            ")])]), _vm._v(" "), _c('li', [_c('p', [_c('a', {
+    attrs: {
+      "href": "https://github.com/FrankKai"
+    }
+  }, [_vm._v("\n                    www.github.com/FrankKai\n                    ")])])]), _vm._v(" "), _c('li', [_c('p', [_vm._v("\n                ●Hexo博客：\n            ")])]), _vm._v(" "), _c('li', [_c('p', [_c('a', {
+    attrs: {
+      "href": "https://frankkai.github.io/"
+    }
+  }, [_vm._v("\n                    www.frankkai.github.io\n                    ")])])])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-1b7b7566", module.exports)
+  }
+}
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "details-four"
+  }, [_c('div', {
+    staticClass: "picture"
+  }), _vm._v(" "), _c('ul', [_c('li', [_c('h3', [_vm._v("vue.js")]), _vm._v(" "), _c('p', [_vm._v("●声明式渲染")]), _vm._v(" "), _c('p', [_vm._v("●模块化思想")]), _vm._v(" "), _c('p', [_vm._v("●双向数据绑定")])]), _vm._v(" "), _c('li', [_c('h3', [_vm._v("css部分")]), _vm._v(" "), _c('p', [_vm._v("●css3切角")]), _vm._v(" "), _c('p', [_vm._v("●css3动画")]), _vm._v(" "), _c('p', [_vm._v("●sass结合koala实现css预编译")])]), _vm._v(" "), _c('li', [_c('h3', [_vm._v("Jquery")]), _vm._v(" "), _c('p', [_vm._v("●实现选项卡功能")])]), _vm._v(" "), _c('li', [_c('h3', [_vm._v("配色选取")]), _vm._v(" "), _c('p', [_vm._v("●http://colorhunt.co")])])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-1b898ce7", module.exports)
+  }
+}
+
+/***/ }),
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -10332,7 +10905,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "to": "/hdu"
     }
-  }, [_vm._v("我的大学")])], 1)])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("我的大学")])], 1), _vm._v(" "), _c('li', [_c('router-link', {
+    attrs: {
+      "to": "/test1"
+    }
+  }, [_vm._v("test1")])], 1), _vm._v(" "), _c('li', [_c('router-link', {
+    attrs: {
+      "to": "/test2"
+    }
+  }, [_vm._v("test2")])], 1)])]), _vm._v(" "), _c('div', {
     staticClass: "content"
   }, [_c('router-view')], 1)])])
 },staticRenderFns: []}
@@ -10345,7 +10926,7 @@ if (false) {
 }
 
 /***/ }),
-/* 11 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -10353,7 +10934,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "details-three"
-  }, [_c('h1', [_vm._v("大学四年最喜欢做的事")]), _vm._v(" "), _c('ul', [_c('li', [_c('h3', [_vm._v(" 打篮球 ")])]), _vm._v(" "), _c('li', [_c('p', [_vm._v("大学最开心的事就是篮球场打篮球，约上三五好友，打球时酣畅淋漓，激情四射，打完球浑身舒服，这时候来一罐冰镇雪碧是最爽的。")])]), _vm._v(" "), _c('li', [_c('h3', [_vm._v(" 玩游戏 ")])]), _vm._v(" "), _c('li', [_c('p', [_vm._v("主要玩三款游戏：NBA2Konline，英雄联盟，炉石传说。毕业后准备入坑守望先锋，因为毕业前以提升前端技术为主。")])]), _vm._v(" "), _c('li', [_c('h3', [_vm._v(" 看小说 ")])]), _vm._v(" "), _c('li', [_c('p', [_vm._v("看了30本左右吧，言情，悬疑，历史都有涉及。也看了不少日本作家写的小说，真的有毒，尤其是太宰治写的《人间失格》，整得我心情低落了一个学期，所以说还是多看一些正能量的作品比较好。")])]), _vm._v(" "), _c('li', [_c('h3', [_vm._v(" 听音乐 ")])]), _c('li', [_c('p', [_vm._v("这个习惯得改，尤其是敲代码的时候，很影响思考。闲暇之余挺音乐是不错的。")])]), _vm._v(" "), _c('li', [_c('h3', [_vm._v(" 泡图书馆 ")])]), _c('li', [_c('p', [_vm._v("图书馆是个好地方，安静，惬意，偶尔还能抬起头来看看妹子。")])])])])
+  }, [_c('div', {
+    staticClass: "picture"
+  }), _vm._v(" "), _c('h1', [_vm._v("大学四年最喜欢做的事")]), _vm._v(" "), _c('ul', [_c('li', [_c('h3', [_vm._v(" 打篮球 ")])]), _vm._v(" "), _c('li', [_c('p', [_vm._v("大学最开心的事就是篮球场打篮球，约上三五好友，打球时酣畅淋漓，激情四射，打完球浑身舒服，这时候来一罐冰镇雪碧是最爽的。")])]), _vm._v(" "), _c('li', [_c('h3', [_vm._v(" 玩游戏 ")])]), _vm._v(" "), _c('li', [_c('p', [_vm._v("主要玩三款游戏：NBA2Konline，英雄联盟，炉石传说。毕业后准备入坑守望先锋，因为毕业前以提升前端技术为主。")])]), _vm._v(" "), _c('li', [_c('h3', [_vm._v(" 看小说 ")])]), _vm._v(" "), _c('li', [_c('p', [_vm._v("看了30本左右吧，言情，悬疑，历史都有涉及。也看了不少日本作家写的小说，真的有毒，尤其是太宰治写的《人间失格》，整得我心情低落了一个学期，所以说还是多看一些正能量的作品比较好。")])]), _vm._v(" "), _c('li', [_c('h3', [_vm._v(" 听音乐 ")])]), _c('li', [_c('p', [_vm._v("这个习惯得改，尤其是敲代码的时候，很影响思考。闲暇之余挺音乐是不错的。")])]), _vm._v(" "), _c('li', [_c('h3', [_vm._v(" 泡图书馆 ")])]), _c('li', [_c('p', [_vm._v("图书馆是个好地方，安静，惬意，偶尔还能抬起头来看看妹子。")])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -10364,7 +10947,7 @@ if (false) {
 }
 
 /***/ }),
-/* 12 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -10372,7 +10955,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "details-one"
-  }, [_c('h3', [_vm._v("个人信息")]), _vm._v(" "), _c('ul', [_c('li', [_c('p', [_vm._v("高 凯 男  22岁  杭州 2017届本科毕业生 15988405210 gaokai20100801@qq.com")])])]), _vm._v(" "), _c('h3', [_vm._v(" 教育经历 ")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v(" 2010.09 - 2013.06 鄂尔多斯市第一中学（内蒙古自治区首批重点中学） ")]), _vm._v(" "), _c('li', [_vm._v(" 2013.09 - 至今 杭州电子科技大学（浙江省首批重点建设的5所高校之一） 通信工程学院 本科 ")])]), _vm._v(" "), _c('h3', [_vm._v(" 实习经历 ")]), _vm._v(" "), _c('ul', [_c('li', [_c('p', [_vm._v("2014年5月  - 2014年6月 ")]), _vm._v(" "), _c('p', [_vm._v("●龙湖地产—售楼部")])]), _vm._v(" "), _c('li', [_c('p', [_vm._v("2015年5月  - 2015年6月 ")]), _vm._v(" "), _c('p', [_vm._v("●去哪儿网杭州分部—销售部")])]), _vm._v(" "), _c('li', [_c('p', [_vm._v("2016年7月  - 2016年10月 ")]), _vm._v(" "), _c('p', [_vm._v("●浙江和仁科技股份有限公司—前端开发部")])])]), _vm._v(" "), _c('h3', [_vm._v(" 参与项目 ")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v(" ●参与龙湖时代天街停车位售卖 ")]), _vm._v(" "), _c('li', [_vm._v(" ●参与去哪儿网APP进酒店推广 ")]), _vm._v(" "), _c('li', [_vm._v(" ●参与“云医疗”项目移动端和PC端的前端开发 ")])]), _vm._v(" "), _c('h3', [_vm._v(" 学生工作经历 ")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v(" ●班级组织委员、学生会干事 ")]), _vm._v(" "), _c('li', [_vm._v(" ●杭州电子科技大学图书馆管理员 ")]), _vm._v(" "), _c('li', [_vm._v(" ●杭州电子科技大学篮球裁判俱乐部裁判 ")]), _vm._v(" "), _c('li', [_vm._v(" ●杭州电子科技大学青年志愿者协会办公室部长 ")])]), _vm._v(" "), _c('h3', [_vm._v(" 证书及获奖经历 ")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v(" ●大学英语四级证书 ")]), _vm._v(" "), _c('li', [_vm._v(" ●中国注册志愿者证书 ")]), _vm._v(" "), _c('li', [_vm._v(" ●通信工程学院学生工作奖、学习优胜奖 ")]), _vm._v(" "), _c('li', [_vm._v(" ●杭州电子科技大学青年志愿者协会优秀干事 ")])]), _vm._v(" "), _c('h3', [_vm._v(" 自我评价 ")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v(" ●工科背景，学习和动手能力较强 ")]), _vm._v(" "), _c('li', [_vm._v(" ●成绩中上，掌握基础软硬件知识 ")]), _vm._v(" "), _c('li', [_vm._v(" ●勇于尝试，学生工作和社会实习经历丰富 ")]), _vm._v(" "), _c('li', [_vm._v(" ●性格开朗，良好的生活习惯和人际交往能力 ")]), _vm._v(" "), _c('li', [_vm._v(" ●爱好广泛，打篮球，看小说，听音乐，泡图书馆 ")]), _vm._v(" "), _c('li', [_vm._v(" ●胸怀梦想，希望这个世界因为自己的存在变得好一点 ")])])])
+  }, [_c('div', {
+    staticClass: "picture"
+  }), _vm._v(" "), _c('h3', [_vm._v("个人信息")]), _vm._v(" "), _c('ul', [_c('li', [_c('p', [_vm._v("高 凯 男  22岁  杭州 2017届本科毕业生 15988405210 gaokai20100801@qq.com")])])]), _vm._v(" "), _c('h3', [_vm._v(" 教育经历 ")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v(" 2010.09 - 2013.06 鄂尔多斯市第一中学（内蒙古自治区首批重点中学） ")]), _vm._v(" "), _c('li', [_vm._v(" 2013.09 - 至今 杭州电子科技大学（浙江省首批重点建设的5所高校之一） 通信工程学院 本科 ")])]), _vm._v(" "), _c('h3', [_vm._v(" 实习经历 ")]), _vm._v(" "), _c('ul', [_c('li', [_c('p', [_vm._v("2014年5月  - 2014年6月 ")]), _vm._v(" "), _c('p', [_vm._v("●龙湖地产—售楼部")])]), _vm._v(" "), _c('li', [_c('p', [_vm._v("2015年5月  - 2015年6月 ")]), _vm._v(" "), _c('p', [_vm._v("●去哪儿网杭州分部—销售部")])]), _vm._v(" "), _c('li', [_c('p', [_vm._v("2016年7月  - 2016年10月 ")]), _vm._v(" "), _c('p', [_vm._v("●浙江和仁科技股份有限公司—前端开发部")])])]), _vm._v(" "), _c('h3', [_vm._v(" 参与项目 ")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v(" ●参与龙湖时代天街停车位售卖 ")]), _vm._v(" "), _c('li', [_vm._v(" ●参与去哪儿网APP进酒店推广 ")]), _vm._v(" "), _c('li', [_vm._v(" ●参与“云医疗”项目移动端和PC端的前端开发 ")])]), _vm._v(" "), _c('h3', [_vm._v(" 学生工作经历 ")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v(" ●班级组织委员、学生会干事 ")]), _vm._v(" "), _c('li', [_vm._v(" ●杭州电子科技大学图书馆管理员 ")]), _vm._v(" "), _c('li', [_vm._v(" ●杭州电子科技大学篮球裁判俱乐部裁判 ")]), _vm._v(" "), _c('li', [_vm._v(" ●杭州电子科技大学青年志愿者协会办公室部长 ")])]), _vm._v(" "), _c('h3', [_vm._v(" 证书及获奖经历 ")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v(" ●大学英语四级证书 ")]), _vm._v(" "), _c('li', [_vm._v(" ●中国注册志愿者证书 ")]), _vm._v(" "), _c('li', [_vm._v(" ●通信工程学院学生工作奖、学习优胜奖 ")]), _vm._v(" "), _c('li', [_vm._v(" ●杭州电子科技大学青年志愿者协会优秀干事 ")])]), _vm._v(" "), _c('h3', [_vm._v(" 自我评价 ")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v(" ●工科背景，学习和动手能力较强 ")]), _vm._v(" "), _c('li', [_vm._v(" ●成绩中上，掌握基础软硬件知识 ")]), _vm._v(" "), _c('li', [_vm._v(" ●勇于尝试，学生工作和社会实习经历丰富 ")]), _vm._v(" "), _c('li', [_vm._v(" ●性格开朗，良好的生活习惯和人际交往能力 ")]), _vm._v(" "), _c('li', [_vm._v(" ●爱好广泛，打篮球，看小说，听音乐，泡图书馆 ")]), _vm._v(" "), _c('li', [_vm._v(" ●胸怀梦想，希望这个世界因为自己的存在变得好一点 ")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -10383,17 +10968,17 @@ if (false) {
 }
 
 /***/ }),
-/* 13 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(22);
+var content = __webpack_require__(30);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(1)("217947cd", content, false);
+var update = __webpack_require__(2)("217947cd", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -10409,17 +10994,17 @@ if(false) {
 }
 
 /***/ }),
-/* 14 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(23);
+var content = __webpack_require__(31);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(1)("3170521a", content, false);
+var update = __webpack_require__(2)("3170521a", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -10435,17 +11020,17 @@ if(false) {
 }
 
 /***/ }),
-/* 15 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(24);
+var content = __webpack_require__(32);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(1)("2e12d6cf", content, false);
+var update = __webpack_require__(2)("2e12d6cf", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -10461,7 +11046,7 @@ if(false) {
 }
 
 /***/ }),
-/* 16 */
+/* 24 */
 /***/ (function(module, exports) {
 
 /**
@@ -10494,11 +11079,13 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 17 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -10528,45 +11115,55 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 18 */
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_info_vue__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_info_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_info_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_hdu_vue__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_hdu_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_hdu_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__App_vue__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__App_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_normalize_css__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_normalize_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_normalize_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_info_vue__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_info_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_info_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_hdu_vue__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_hdu_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_hdu_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_test1_vue__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_test1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_test1_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_test2_vue__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_test2_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_test2_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__App_vue__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__App_vue__);
+__webpack_require__(11);
 
 
 
-__WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
+
+__WEBPACK_IMPORTED_MODULE_1_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]);
 
 
 
 
-const routes = [{ path: '/info', component: __WEBPACK_IMPORTED_MODULE_2__components_info_vue___default.a }, { path: '/hdu', component: __WEBPACK_IMPORTED_MODULE_3__components_hdu_vue___default.a }];
-const router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
+
+
+const routes = [{ path: '/info', component: __WEBPACK_IMPORTED_MODULE_3__components_info_vue___default.a }, { path: '/hdu', component: __WEBPACK_IMPORTED_MODULE_4__components_hdu_vue___default.a }, { path: '/test1', component: __WEBPACK_IMPORTED_MODULE_5__components_test1_vue___default.a }, { path: '/test2', component: __WEBPACK_IMPORTED_MODULE_6__components_test2_vue___default.a }];
+const router = new __WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]({
   routes
 });
 
 
 // console.log(Vue);
 // console.log(App);
-new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
+new __WEBPACK_IMPORTED_MODULE_1_vue__["a" /* default */]({
   el: '#app',
   router,
-  render: h => h(__WEBPACK_IMPORTED_MODULE_4__App_vue___default.a)
+  render: h => h(__WEBPACK_IMPORTED_MODULE_7__App_vue___default.a)
 });
 // console.log(Vue);
 // console.table(App);
 
 /***/ }),
-/* 19 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10687,7 +11284,7 @@ function fromByteArray (uint8) {
 
 
 /***/ }),
-/* 20 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10701,9 +11298,9 @@ function fromByteArray (uint8) {
 
 
 
-var base64 = __webpack_require__(19)
-var ieee754 = __webpack_require__(25)
-var isArray = __webpack_require__(21)
+var base64 = __webpack_require__(27)
+var ieee754 = __webpack_require__(34)
+var isArray = __webpack_require__(29)
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -12484,7 +13081,7 @@ function isnan (val) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ }),
-/* 21 */
+/* 29 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -12495,49 +13092,63 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ }),
-/* 22 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(undefined);
+exports = module.exports = __webpack_require__(1)(undefined);
 // imports
 
 
 // module
-exports.push([module.i, "\nhtml, body, p, ul, li, h1, h2, h3, h4 {\n  padding: 0;\n  margin: 0;\n}\nul {\n  list-style: none;\n}\n.main {\n  width: 100%;\n}\nhtml {\n  background: #FBE8D3;\n}\n@keyframes bounce {\n60%, 80%, to {\n    transform: translateY(300px);\n    animation-timing-function: ease;\n}\n70% {\n    transform: translateY(200px);\n}\n90% {\n    transform: translateY(260px);\n}\n}\n.sidebar {\n  position: fixed;\n  top: 50px;\n  width: 20%;\n  text-align: center;\n  background: #70A1D7;\n  background: linear-gradient(135deg, transparent 20px, #70A1D7 0) top left, linear-gradient(225deg, transparent 20px, #70A1D7 0) top right, linear-gradient(-45deg, transparent 20px, #70A1D7 0) bottom right, linear-gradient(45deg, transparent 20px, #70A1D7 0) bottom left;\n  background-size: 51% 51%;\n  background-repeat: no-repeat;\n  padding: 40px 0;\n}\n.todos {\n  height: 30px;\n  background: #F47C7C;\n  background: linear-gradient(135deg, transparent 15px, #F47C7C 0) top left, linear-gradient(225deg, transparent 15px, #F47C7C 0) top right, linear-gradient(-45deg, transparent 15px, #F47C7C 0) bottom right, linear-gradient(45deg, transparent 15px, #F47C7C 0) bottom left;\n  background-size: 51% 51%;\n  background-repeat: no-repeat;\n}\n.sidebar li {\n  position: relative;\n  font-size: 24px;\n  margin: 10px;\n  cursor: pointer;\n  color: #fff;\n}\n.sidebar h1 {\n  width: 80%;\n  padding: 20px;\n  margin: auto;\n  background: #F7F48B;\n  background: linear-gradient(135deg, transparent 15px, #F7F48B 0) top left, linear-gradient(225deg, transparent 15px, #F7F48B 0) top right, linear-gradient(-45deg, transparent 15px, #F7F48B 0) bottom right, linear-gradient(45deg, transparent 15px, #F7F48B 0) bottom left;\n  background-size: 51% 51%;\n  background-repeat: no-repeat;\n}\n.sidebar input {\n  line-height: 2;\n  text-align: center;\n}\n.content {\n  width: 80%;\n  margin-top: 50px;\n  margin-left: 20%;\n  margin-bottom: 50px;\n  background: rgba(0, 0, 255, 0.1);\n  background: #A1DE93;\n  background: linear-gradient(135deg, transparent 20px, #A1DE93 0) top left, linear-gradient(225deg, transparent 20px, #A1DE93 0) top right, linear-gradient(-45deg, transparent 20px, #A1DE93 0) bottom right, linear-gradient(45deg, transparent 20px, #A1DE93 0) bottom left;\n  background-size: 51% 51%;\n  background-repeat: no-repeat;\n}\n.content h3 {\n  color: #283739;\n  padding: 10px;\n  background: #F7F48B;\n  border-radius: 10px;\n}\n.content li {\n  font-weight: bold;\n  color: #6C7A89;\n}\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
 
 /***/ }),
-/* 23 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(undefined);
+exports = module.exports = __webpack_require__(1)(undefined);
 // imports
 
 
 // module
-exports.push([module.i, "\n.content-box-three .picture {\n  width: 100%;\n  height: 300px;\n  background-size: contain;\n  position: relative;\n  top: -280px;\n  animation: bounce 2s cubic-bezier(0.1, 0.25, 1, 0.25) forwards;\n}\n.content-box-three .details-three {\n  width: 60%;\n  margin: auto;\n  padding-top: 50px;\n  padding-bottom: 50px;\n}\n.content-box-three .details-three li {\n    padding: 10px;\n    font-size: 20px;\n}\n.content-box-three .details-three li p {\n      text-indent: 40px;\n}\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
 
 /***/ }),
-/* 24 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(undefined);
+exports = module.exports = __webpack_require__(1)(undefined);
 // imports
 
 
 // module
-exports.push([module.i, "\n.content-box-one .picture {\n  width: 100%;\n  height: 240px;\n  background-size: contain;\n  position: relative;\n  top: -280px;\n  animation: bounce 2s cubic-bezier(0.1, 0.25, 1, 0.25) forwards;\n}\n.content-box-one .details-one {\n  width: 60%;\n  margin: auto;\n  padding: 50px;\n}\n.content-box-one .details-one li {\n  padding: 5px;\n}\n.content-box-one .details-one h1 {\n  padding: 10px 0;\n}\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
 
 /***/ }),
-/* 25 */
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "/*! normalize.css v6.0.0 | MIT License | github.com/necolas/normalize.css */\n\n/* Document\n   ========================================================================== */\n\n/**\n * 1. Correct the line height in all browsers.\n * 2. Prevent adjustments of font size after orientation changes in\n *    IE on Windows Phone and in iOS.\n */\n\nhtml {\n  line-height: 1.15; /* 1 */\n  -ms-text-size-adjust: 100%; /* 2 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n}\n\n/* Sections\n   ========================================================================== */\n\n/**\n * Add the correct display in IE 9-.\n */\n\narticle,\naside,\nfooter,\nheader,\nnav,\nsection {\n  display: block;\n}\n\n/**\n * Correct the font size and margin on `h1` elements within `section` and\n * `article` contexts in Chrome, Firefox, and Safari.\n */\n\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0;\n}\n\n/* Grouping content\n   ========================================================================== */\n\n/**\n * Add the correct display in IE 9-.\n * 1. Add the correct display in IE.\n */\n\nfigcaption,\nfigure,\nmain { /* 1 */\n  display: block;\n}\n\n/**\n * Add the correct margin in IE 8.\n */\n\nfigure {\n  margin: 1em 40px;\n}\n\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\n\nhr {\n  box-sizing: content-box; /* 1 */\n  height: 0; /* 1 */\n  overflow: visible; /* 2 */\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\n\npre {\n  font-family: monospace, monospace; /* 1 */\n  font-size: 1em; /* 2 */\n}\n\n/* Text-level semantics\n   ========================================================================== */\n\n/**\n * 1. Remove the gray background on active links in IE 10.\n * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.\n */\n\na {\n  background-color: transparent; /* 1 */\n  -webkit-text-decoration-skip: objects; /* 2 */\n}\n\n/**\n * 1. Remove the bottom border in Chrome 57- and Firefox 39-.\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\n\nabbr[title] {\n  border-bottom: none; /* 1 */\n  text-decoration: underline; /* 2 */\n  text-decoration: underline dotted; /* 2 */\n}\n\n/**\n * Prevent the duplicate application of `bolder` by the next rule in Safari 6.\n */\n\nb,\nstrong {\n  font-weight: inherit;\n}\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\n\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\n\ncode,\nkbd,\nsamp {\n  font-family: monospace, monospace; /* 1 */\n  font-size: 1em; /* 2 */\n}\n\n/**\n * Add the correct font style in Android 4.3-.\n */\n\ndfn {\n  font-style: italic;\n}\n\n/**\n * Add the correct background and color in IE 9-.\n */\n\nmark {\n  background-color: #ff0;\n  color: #000;\n}\n\n/**\n * Add the correct font size in all browsers.\n */\n\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\n\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/* Embedded content\n   ========================================================================== */\n\n/**\n * Add the correct display in IE 9-.\n */\n\naudio,\nvideo {\n  display: inline-block;\n}\n\n/**\n * Add the correct display in iOS 4-7.\n */\n\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\n\n/**\n * Remove the border on images inside links in IE 10-.\n */\n\nimg {\n  border-style: none;\n}\n\n/**\n * Hide the overflow in IE.\n */\n\nsvg:not(:root) {\n  overflow: hidden;\n}\n\n/* Forms\n   ========================================================================== */\n\n/**\n * Remove the margin in Firefox and Safari.\n */\n\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  margin: 0;\n}\n\n/**\n * Show the overflow in IE.\n * 1. Show the overflow in Edge.\n */\n\nbutton,\ninput { /* 1 */\n  overflow: visible;\n}\n\n/**\n * Remove the inheritance of text transform in Edge, Firefox, and IE.\n * 1. Remove the inheritance of text transform in Firefox.\n */\n\nbutton,\nselect { /* 1 */\n  text-transform: none;\n}\n\n/**\n * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`\n *    controls in Android 4.\n * 2. Correct the inability to style clickable types in iOS and Safari.\n */\n\nbutton,\nhtml [type=\"button\"], /* 1 */\n[type=\"reset\"],\n[type=\"submit\"] {\n  -webkit-appearance: button; /* 2 */\n}\n\n/**\n * Remove the inner border and padding in Firefox.\n */\n\nbutton::-moz-focus-inner,\n[type=\"button\"]::-moz-focus-inner,\n[type=\"reset\"]::-moz-focus-inner,\n[type=\"submit\"]::-moz-focus-inner {\n  border-style: none;\n  padding: 0;\n}\n\n/**\n * Restore the focus styles unset by the previous rule.\n */\n\nbutton:-moz-focusring,\n[type=\"button\"]:-moz-focusring,\n[type=\"reset\"]:-moz-focusring,\n[type=\"submit\"]:-moz-focusring {\n  outline: 1px dotted ButtonText;\n}\n\n/**\n * 1. Correct the text wrapping in Edge and IE.\n * 2. Correct the color inheritance from `fieldset` elements in IE.\n * 3. Remove the padding so developers are not caught out when they zero out\n *    `fieldset` elements in all browsers.\n */\n\nlegend {\n  box-sizing: border-box; /* 1 */\n  color: inherit; /* 2 */\n  display: table; /* 1 */\n  max-width: 100%; /* 1 */\n  padding: 0; /* 3 */\n  white-space: normal; /* 1 */\n}\n\n/**\n * 1. Add the correct display in IE 9-.\n * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\n\nprogress {\n  display: inline-block; /* 1 */\n  vertical-align: baseline; /* 2 */\n}\n\n/**\n * Remove the default vertical scrollbar in IE.\n */\n\ntextarea {\n  overflow: auto;\n}\n\n/**\n * 1. Add the correct box sizing in IE 10-.\n * 2. Remove the padding in IE 10-.\n */\n\n[type=\"checkbox\"],\n[type=\"radio\"] {\n  box-sizing: border-box; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n\n[type=\"number\"]::-webkit-inner-spin-button,\n[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * 1. Correct the odd appearance in Chrome and Safari.\n * 2. Correct the outline style in Safari.\n */\n\n[type=\"search\"] {\n  -webkit-appearance: textfield; /* 1 */\n  outline-offset: -2px; /* 2 */\n}\n\n/**\n * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.\n */\n\n[type=\"search\"]::-webkit-search-cancel-button,\n[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Change font properties to `inherit` in Safari.\n */\n\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n\n/* Interactive\n   ========================================================================== */\n\n/*\n * Add the correct display in IE 9-.\n * 1. Add the correct display in Edge, IE, and Firefox.\n */\n\ndetails, /* 1 */\nmenu {\n  display: block;\n}\n\n/*\n * Add the correct display in all browsers.\n */\n\nsummary {\n  display: list-item;\n}\n\n/* Scripting\n   ========================================================================== */\n\n/**\n * Add the correct display in IE 9-.\n */\n\ncanvas {\n  display: inline-block;\n}\n\n/**\n * Add the correct display in IE.\n */\n\ntemplate {\n  display: none;\n}\n\n/* Hidden\n   ========================================================================== */\n\n/**\n * Add the correct display in IE 10-.\n */\n\n[hidden] {\n  display: none;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 34 */
 /***/ (function(module, exports) {
 
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
