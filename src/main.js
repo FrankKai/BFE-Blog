@@ -1,5 +1,7 @@
-require( "./scss/main.scss");
+// require( "./scss/main.scss");
 import Normalize from 'normalize.css'
+import Animate from 'animate.css'
+import Main from './scss/main.scss'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 

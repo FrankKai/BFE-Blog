@@ -5,6 +5,7 @@
   "main": "webpack.config.js",
   "dependencies": {},
   "devDependencies": {
+    "animate.css": "^3.5.2",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-preset-latest": "^6.24.1",
