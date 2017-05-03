@@ -1,6 +1,7 @@
 .sidebar {
 	position: fixed;
 	top:50px;
+	left:3%;
 	width: 20%;
 	text-align: center;
 	@include beveled-corners(#70A1D7,20px,5px);
@@ -17,6 +18,11 @@
 		margin: 10px;
 		cursor:pointer;
 		color:$white;
+		a{
+			text-decoration: none;
+			color:#fff;
+			font-size: 20px;
+		}
 	}
 	h1{	
 		width:80%;
@@ -27,5 +33,10 @@
 	input{
 		line-height:2;
 		text-align:center;
+	}
+	p{
+		color:#fff;
+		font-size: 5px;
+		margin-top:15px;
 	}
 }

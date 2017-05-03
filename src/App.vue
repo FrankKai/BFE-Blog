@@ -1,15 +1,17 @@
 <template>
   <div id="app"> 
     <div class="main">
-      <div class="sidebar">   
-        <h1></h1>
-        <h2>Essential Links</h2>
-        <ul>
-            <li><router-link to="/info">各人简介</router-link></li>
-            <li><router-link to="/hdu">我的大学</router-link></li>
-            <li><router-link to="/test1">test1</router-link></li>
-            <li><router-link to="/test2">test2</router-link></li>
-        </ul>
+      <div class="sidebar">
+          <h1> {{name}} </h1>   
+          <ul>
+              <li><router-link to="/info">个人简历</router-link></li>
+              <li><router-link to="/hdu">我的大学</router-link></li>
+              <li><router-link to="/test1">成长之路</router-link></li>
+              <li><router-link to="/test2">博客技术</router-link></li>
+          </ul>
+          <input v-model="name"></input>
+          <p>{{time}}</p>
+          <p>{{test}}</p>
        </div> 
         <div class="content">
           <router-view></router-view>
@@ -23,7 +25,10 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      name: '趁你还年轻',
+		  time: '最后加载时间为：' + new Date(),
+      test: 'fuck you'
     }
   }
 }

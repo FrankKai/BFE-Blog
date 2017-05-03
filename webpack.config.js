@@ -47,15 +47,27 @@ const config = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?[hash]'
+          name: '[name].[ext]',
+          publicPath: 'build/',
+          outputPath: 'images/'
         }
       },
       {
         test: /\.css$/,
         use: [ 'style-loader', 'css-loader' ]
-      }
+      },
+// 　　　　{
+// 　　　　　　test: /\.(png|jpg)$/,
+// 　　　　　　loader: 'url-loader?limit=8192&name=assets/images/[name].[ext]'
+// 　　　　}
       ]
   },
+  // devServer: {
+  //   contentBase: path.join(__dirname, "build"),
+  //   compress: true,
+  //   port: 9000
+  // },
+  devtool: '#eval-source-map'
   // plugins: [
   //   extractSASS
   // ]

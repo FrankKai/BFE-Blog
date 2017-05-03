@@ -6,6 +6,7 @@
   "dependencies": {},
   "devDependencies": {
     "animate.css": "^3.5.2",
+    "axios": "^0.16.1",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-preset-latest": "^6.24.1",
@@ -18,15 +19,18 @@
     "sass-loader": "^6.0.3",
     "scss-loader": "^0.0.1",
     "style-loader": "^0.16.1",
+    "url-loader": "^0.5.8",
     "vue": "^2.3.0",
     "vue-cli": "^2.8.1",
     "vue-loader": "^11.3.4",
     "vue-router": "^2.5.2",
-    "vue-template-compiler": "^2.3.0"
+    "vue-template-compiler": "^2.3.0",
+    "webpack-dev-server": "^2.4.5"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack"
+    "start": "webpack",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot"
   },
   "repository": {
     "type": "git",
