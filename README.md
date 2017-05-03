@@ -184,3 +184,11 @@ https://segmentfault.com/q/1010000009166404/a-1020000009187068
 5. 聚合数据server端不支持跨域，需要写后端转发该请求，用代理的方式实现。
 6. 发现jsonbird并尝试实现不支持跨域到支持跨域的实现。
 7. 了解跨域资源共享，了解高级程序设计jsonp。
+8. 解决segmentfault上的问题。
+9. jsonBird还不成熟，改为请求mock数据。
+
+2017年5月4日
+1. 从stackoverflow上解决了异源跨域访问，添加chrome插件：Allow-Control-Allow-Origin: *
+2. 成功引用在线api，实现从api获取数据，实现本地数据在线更新
+3. 下一步:深入学习vue，理解Vue构造函数。
+4. 五四青年节，白天上班，晚上休息一波。
