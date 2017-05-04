@@ -188,7 +188,8 @@ https://segmentfault.com/q/1010000009166404/a-1020000009187068
 9. jsonBird还不成熟，改为请求mock数据。
 
 2017年5月4日
-1. 从stackoverflow上解决了异源跨域访问，添加chrome插件：Allow-Control-Allow-Origin: *
-2. 成功引用在线api，实现从api获取数据，实现本地数据在线更新
-3. 下一步:深入学习vue，理解Vue构造函数。
-4. 五四青年节，白天上班，晚上休息一波。
+1. 从stackoverflow上解决了异源跨域访问，添加chrome插件：Allow-Control-Allow-Origin: *。
+2. 成功引用在线api，实现从api获取数据，实现本地数据在线更新。
+3. 聚合数据就是一坨屎，百度地图api调用成功。
+4. 下一步:学习跨域资源共享CORS。
+5. 五四青年节，白天上班，晚上休息一波。

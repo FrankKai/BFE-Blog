@@ -2,7 +2,7 @@
   <div id="app"> 
     <div class="main">
       <div class="sidebar">
-          <h1 class="animated" transition="bounce"> {{name}} </h1>   
+          <h1> {{name}} </h1>   
           <ul>
               <li><router-link to="/info">个人简历</router-link></li>
               <li><router-link to="/hdu">我的大学</router-link></li>
@@ -13,8 +13,14 @@
           <p>{{time}}</p>
           <p>{{test}}</p>
        </div> 
-        <div class="content">
-          <router-view></router-view>
+        <div class="content" >         
+          <transition name="bounce" enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutRight">
+            <router-view></router-view>
+            
+          </transition>
+          <!--<transition class="animated" transition="bounce">
+           <router-view></router-view>
+           </transition>-->
         </div>
      </div> 
   </div>
@@ -32,12 +38,12 @@ export default {
       test: 'fuck you'
     }
   },
-  transitions: {
-    bounce: {
-      enterClass: 'bounceInLeft',
-      leaveClass: 'bounceOutRight'
-    }
-  },
+  // transitions: {
+  //   bounce: {
+  //     enterClass: 'bounceInLeft',
+  //     leaveClass: 'bounceOutRight'
+  //   }
+  // },
   mounted () {
   //   this.getPosts('home');
   // },
@@ -53,13 +59,15 @@ export default {
     // getPosts(){
     Axios({
         method:'get',//方法
-        url:'http://v.juhe.cn/nba/top5.php?key=1e98013a680418427fcf0f93b9973324' //地址
+        // url:'http://v.juhe.cn/nba/top5.php?key=1e98013a680418427fcf0f93b9973324' //地址
+        url: 'http://api.map.baidu.com/place/v2/search?q=饭店&region=北京&output=json&ak=7EoCx4LHg0PF1XpXMybxM8KYCxk542X0	'
         // data:{//参数
         //     firstName:'Fred',
         //     lastName:'Flintstone'
         // }
     }).then((response) => {
-        this.test = response.data.reason;
+      console.log(response);
+        this.test = response.data.message;
       })
     // then(function(response){
     //     console.log(response.data);
