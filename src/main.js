@@ -26,6 +26,9 @@ import App from './App.vue'
 // console.log(Vue);  
 // console.log(App);
 import Axios from 'axios'
+// import VueJsonp from 'vue-jsonp'
+// Vue.use(VueJsonp)
+import anime from 'animejs'
 new Vue({
   el: '#app',
   router,
@@ -33,7 +36,6 @@ new Vue({
   // data:{
   //   test: 'test'
   // },
-  
 })
 // console.log(Vue);
 // console.table(App);

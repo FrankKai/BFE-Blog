@@ -2,6 +2,7 @@ const path = require('path');
 var webpack = require('webpack')
 // const ExtractTextPlugin = require("extract-text-webpack-plugin");
 // const extractSASS = new ExtractTextPlugin('main.css');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const config = {
   entry: {
     app: './src/main.js'
@@ -67,7 +68,7 @@ const config = {
   //   compress: true,
   //   port: 9000
   // },
-  devtool: '#eval-source-map'
+  // devnpm install uglifyjs-webpack-plugin --save-dev
   // plugins: [
   //   extractSASS
   // ]
@@ -90,10 +91,15 @@ const config = {
   // resolve: {
   //   extensions: ['.json', '.js', '.jsx', '.css']
   // },
-  // devtool: 'source-map'
+  // devtool: 'source-map',
   //  resolveLoader: {
   //   root: path.join(__dirname, 'node_modules')
   // }
+    // plugins: [
+    //   new webpack.optimize.UglifyJsPlugin({
+    //     sourceMap: options.devtool && (options.devtool.indexOf("sourcemap") >= 0 || options.devtool.indexOf("source-map") >= 0)
+    //   })
+    // ]
 };
 module.exports = config;
 console.log('kaibaba的vue博客正在构建，请耐心等待...');

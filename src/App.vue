@@ -28,6 +28,9 @@
 
 <script>
 import Axios from 'axios'
+import Jsonp from 'jsonp'
+import anime from 'animejs'
+// import VueJsonp from 'vue-jsonp'
 export default {
   name: 'app',
   data () {
@@ -44,7 +47,29 @@ export default {
   //     leaveClass: 'bounceOutRight'
   //   }
   // },
+  // methods (){
+  //   anime({
+  //     targets: 'div',
+  //     translateX: [
+  //       { value: 100, duration: 1200 },
+  //       { value: 0, duration: 800 }
+  //     ],
+  //     rotate: '1turn',
+  //     backgroundColor: '#FFF',
+  //     duration: 2000,
+  //     loop: true
+  //   });
+  // },
+  
   mounted () {
+        Jsonp('http://api.map.baidu.com/place/v2/search?q=饭店&region=北京&output=json&ak=7EoCx4LHg0PF1XpXMybxM8KYCxk542X0', null, function (err, data) {
+      if (err) {
+        console.error(err.message);
+      } else {
+        console.log(data);
+        // test=data.message;
+      }
+    })
   //   this.getPosts('home');
   // },
   // methods: {
@@ -57,18 +82,18 @@ export default {
     //     console.log(response.config);
     // });
     // getPosts(){
-    Axios({
-        method:'get',//方法
-        // url:'http://v.juhe.cn/nba/top5.php?key=1e98013a680418427fcf0f93b9973324' //地址
-        url: 'http://api.map.baidu.com/place/v2/search?q=饭店&region=北京&output=json&ak=7EoCx4LHg0PF1XpXMybxM8KYCxk542X0	'
-        // data:{//参数
-        //     firstName:'Fred',
-        //     lastName:'Flintstone'
-        // }
-    }).then((response) => {
-      console.log(response);
-        this.test = response.data.message;
-      })
+    // Axios({
+    //     method:'get',//方法
+    //     // url:'http://v.juhe.cn/nba/top5.php?key=1e98013a680418427fcf0f93b9973324' //地址
+    //     url: 'http://api.map.baidu.com/place/v2/search?q=饭店&region=北京&output=json&ak=7EoCx4LHg0PF1XpXMybxM8KYCxk542X0'
+    //     // data:{//参数
+    //     //     firstName:'Fred',
+    //     //     lastName:'Flintstone'
+    //     // }
+    // }).then((response) => {
+    //   console.log(response);
+    //     this.test = response.data.message;
+    //   })
     // then(function(response){
     //     console.log(response.data);
     //     console.log(response.status);
@@ -89,6 +114,15 @@ export default {
   // .catch(function (error) {
   //   console.log(error);
   // });
+  // }
+  // methods(){
+  //   Jsonp('http://api.map.baidu.com/place/v2/search?q=饭店&region=北京&output=json&ak=7EoCx4LHg0PF1XpXMybxM8KYCxk542X0', null, function (err, data) {
+  //     if (err) {
+  //       console.error(err.message);
+  //     } else {
+  //       console.log(data);
+  //     }
+  //   });
   // }
 }
 </script>
