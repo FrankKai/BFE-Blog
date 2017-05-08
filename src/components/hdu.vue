@@ -21,13 +21,13 @@
             <li>
                 <p>看了30本左右吧，言情，悬疑，历史都有涉及。也看了不少日本作家写的小说，真的有毒，尤其是太宰治写的《人间失格》，整得我心情低落了一个学期，所以说还是多看一些正能量的作品比较好。</p>
             </li>
-
+    
             <li>
                 <h3> 听音乐 </h3>
                 <li>
                     <p>这个习惯得改，尤其是敲代码的时候，很影响思考。闲暇之余挺音乐是不错的。</p>
                 </li>
-
+    
                 <li>
                     <h3> 泡图书馆 </h3>
                     <li>
@@ -36,30 +36,3 @@
         </ul>
     </div>
 </template>
-
-<style lang="scss">
-// .content-box-three{
-//     .picture{
-//         width: 100%;
-//         height: 300px;
-//         // background: url("./images/201610170737211000.jpg") center no-repeat;
-//         background-size: contain;
-//         position:relative;
-//         top:-280px;
-//         animation: bounce 2s cubic-bezier(.1,.25,1,.25) forwards;
-//     }
-//     .details-three{
-//         width:60%;
-//         margin:auto;
-//         padding-top:50px;
-//         padding-bottom:50px;
-//         li{
-//             padding:10px;
-//             font-size:20px;
-//             p{
-//                 text-indent:40px;
-//             }
-//         }
-//     }
-// }
-</style>

@@ -1,4 +1,3 @@
-// require( "./scss/main.scss");
 import Normalize from 'normalize.css'
 import Animate from 'animate.css'
 import Main from './scss/main.scss'
@@ -12,30 +11,32 @@ import Hdu from './components/hdu.vue'
 import Test1 from './components/test1.vue'
 import Test2 from './components/test2.vue'
 
-const routes = [
-	{ path:'/info', component: Info },
-	{ path:'/hdu', component: Hdu },
-  { path:'/test1', component: Test1 },
-	{ path:'/test2', component: Test2 }
+const routes = [{
+    path: '/info',
+    component: Info
+  },
+  {
+    path: '/hdu',
+    component: Hdu
+  },
+  {
+    path: '/test1',
+    component: Test1
+  },
+  {
+    path: '/test2',
+    component: Test2
+  }
 ]
 const router = new VueRouter({
-	routes
+  routes
 })
 
 import App from './App.vue'
-// console.log(Vue);  
-// console.log(App);
 import Axios from 'axios'
-// import VueJsonp from 'vue-jsonp'
-// Vue.use(VueJsonp)
 import anime from 'animejs'
 new Vue({
   el: '#app',
   router,
   render: h => h(App),
-  // data:{
-  //   test: 'test'
-  // },
 })
-// console.log(Vue);
-// console.table(App);

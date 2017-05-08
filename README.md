@@ -203,3 +203,15 @@ https://segmentfault.com/q/1010000009166404/a-1020000009187068
 3. 添加animejs点击动画
 4. 接下来挖掘vue全家桶中的vuex
 5. 删除无关内容，新增参考文件夹
+6. 找一个vue开发的项目源码，读源码进行学习
+7. 翻译一篇mvvm外文博客：理解mvvm模式之外，提升英文水平
+
+2017年5月8日
+1. 2个issue辅助学习
+2. 1个resposiry记录前端程序员生词
+3. 购买you don't know javascript up&going 
+4. 购买大漠的css3实践书籍，补html和css基础
+5. 购买javascript 数据结构和算法，温故而知新
+6. 学习javascript高级程序设计：String类型方法，DOM章节的element类型和text类型
+7. 阅读英文版vue官网，理解vue框架的基本概念
+8. 待学习内容：调查awesome-vue的用处；结合高设学习javascript数据结构和算法；补充对于html5和css3的理解。
