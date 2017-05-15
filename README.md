@@ -215,3 +215,13 @@ https://segmentfault.com/q/1010000009166404/a-1020000009187068
 6. 学习javascript高级程序设计：String类型方法，DOM章节的element类型和text类型
 7. 阅读英文版vue官网，理解vue框架的基本概念
 8. 待学习内容：调查awesome-vue的用处；结合高设学习javascript数据结构和算法；补充对于html5和css3的理解。
+
+2017年5月15日
+1.最近沉迷于segmentfault思考网友问题
+2.研究公司了可视化插件开发
+3.学习了JSON对象转换和解析
+4.发现vscode切换终端的方法
+5.node连接mongodb成功
+6.区分mongo 和mongod
+7.理解node中的中间件
+8.下一步学习node基础《深入浅出nodejs》

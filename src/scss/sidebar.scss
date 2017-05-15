@@ -6,6 +6,7 @@
 	text-align: center;
 	@include beveled-corners(#70A1D7, 20px, 5px);
 	padding: 40px 0;
+	opacity: 0.8;
 }
 
 .todos {

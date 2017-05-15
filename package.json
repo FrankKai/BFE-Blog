@@ -16,6 +16,8 @@
     "file-loader": "^0.11.1",
     "jquery": "^3.2.1",
     "jsonp": "^0.2.1",
+    "mongodb": "^2.2.26",
+    "mongoose": "^4.9.9",
     "node-sass": "^4.5.2",
     "normalize.css": "^6.0.0",
     "sass-loader": "^6.0.3",
@@ -30,10 +32,11 @@
     "vue-loader": "^11.3.4",
     "vue-router": "^2.5.2",
     "vue-template-compiler": "^2.3.0",
+    "vuex": "^2.3.1",
     "webpack-dev-server": "^2.4.5"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo hello world",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot"
   },
