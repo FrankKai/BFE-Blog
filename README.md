@@ -225,3 +225,9 @@ https://segmentfault.com/q/1010000009166404/a-1020000009187068
 6. 区分mongo 和mongod
 7. 理解node中的中间件
 8. 下一步学习node基础《深入浅出nodejs》
+
+2017年5月16日
+1. 看中文版nodejs beginner入门
+2. 深入浅出nodejs门槛略高
+3. 加入cnode社区
+4. 加入v2ex社区
