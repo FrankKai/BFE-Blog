@@ -13,47 +13,49 @@
 
 主要技术：
 <ul>
-            <li>
-                <h3>Vue半家桶</h3>
-                <p>●.vue单文件组件</p>
-                <p>●vue-router路由</p>
-                <p>●vue路由添加过渡动画</p>
-                <p>●axios跨域请求百度地图api</p>
-            </li>
-            <li>
-                <h3>Webpack</h3>
-                <p>●支持sass--'style-loader', 'css-loader', 'sass-loader'</p>
-                <p>●支持vue单文件组件--'vue-loader'</p>
-                <p>●支持ES6语法--'babel-loader'</p>
-                <p>●支持各种类型图片加载--'file-loader'</p>
-                <p>●支持本地服务器环境--'webpack-dev-server'</p>
-            </li>
-            <li>
-                <h3>css部分</h3>
-                <p>●animate.css动画库</p>
-                <p>●css3切角</p>
-                <p>●原生css3动画</p>
-            </li>
-            <li>
-                <h3>●后端技术（摸索中，未体现在博客中）</h3>
-                <p>●nodejs搭建服务器，路由和事件处理程序</p> 
-                <p>●express+mongoose，连接mongodb，管理数据</p>
-                <p>●Ubuntu 16.04.1，腾讯云linux服务器CVM</p>
-		<p>●Python Django搭建后台管理平台</p>	
-            </li>
-        </ul>
+    <li>
+	<h3>Vue半家桶</h3>
+	<p>●.vue单文件组件</p>
+	<p>●vue-router路由</p>
+	<p>●vue路由添加过渡动画</p>
+	<p>●axios跨域请求百度地图api</p>
+    </li>
+    <li>
+	<h3>Webpack</h3>
+	<p>●支持sass--'style-loader', 'css-loader', 'sass-loader'</p>
+	<p>●支持vue单文件组件--'vue-loader'</p>
+	<p>●支持ES6语法--'babel-loader'</p>
+	<p>●支持各种类型图片加载--'file-loader'</p>
+	<p>●支持本地服务器环境--'webpack-dev-server'</p>
+    </li>
+    <li>
+	<h3>css部分</h3>
+	<p>●animate.css动画库</p>
+	<p>●css3切角</p>
+	<p>●原生css3动画</p>
+    </li>
+    <li>
+	<h3>●后端技术（摸索中，未体现在博客中）</h3>
+	<p>●nodejs搭建服务器，路由和事件处理程序</p> 
+	<p>●express+mongoose，连接mongodb，管理数据</p>
+	<p>●Ubuntu 16.04.1，腾讯云linux服务器CVM</p>
+	<p>●Python Django搭建后台管理平台</p>	
+    </li>
+</ul>
 
-<h2>待添加功能：</h2>  
-1. 将静态个人简历向动态博客转换  
-2. 添加博客生成功能，后台push前端展现  
-3. 添加博客路由分类功能  
-4. 添加评论功能  
-5. 添加分享功能  
-6. 添加canvas粒子特效  
-7. 添加访问博客者来源地区统计  
-8. 添加发送邮件功能  
+<ul>
+<li><h3>待添加功能：</h3></li>  
+<li>1. 将静态个人简历向动态博客转换</li>   
+<li>2. 添加博客生成功能，后台push前端展现</li>   
+<li>3. 添加博客路由分类功能</li>   
+<li>4. 添加评论功能</li>   
+<li>5. 添加分享功能</li>   
+<li>6. 添加canvas粒子特效</li>   
+<li>7. 添加访问博客者来源地区统计</li>   
+<li>8. 添加发送邮件功能</li>   
+</ul>
 
-
+<h2>开发日志：</h2>
 **1.重新建库，基于个人博客学vue√**  
 **2.加入webpack工具√**  
 注意：vscode中的webpack插件需要先有package.json文件才能初始化，之后再npm install  
