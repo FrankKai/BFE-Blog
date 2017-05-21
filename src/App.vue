@@ -19,7 +19,7 @@
         </ul>
         <input v-model="name"></input>
         <p>{{time}}</p>
-        <p>{{test}}</p>
+        <p v-on:click="showinfo">{{test}}</p>
       </div>
       <div class="content">
         <transition name="bounce" enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutRight">
@@ -45,23 +45,39 @@ export default {
       test: 'fuck you'
     }
   },
+  // props:['test'],
   mounted() {
     //     Jsonp('http://api.map.baidu.com/place/v2/search?q=饭店&region=北京&output=json&ak=7EoCx4LHg0PF1XpXMybxM8KYCxk542X0', null, function (err, data) {
     //   if (err) {
     //     console.error(err.message);
     //   } else {
+    //     // console.log($test);
+    //     console.log(test);        
+    //     $test=data.message;
     //     console.log(data);
-    //     // $data.test=data.message;
     //   }
     // })
-    Axios({
+    // Axios({
+    //   method: 'get',
+    //   url: 'http://api.map.baidu.com/place/v2/search?q=饭店&region=北京&output=json&ak=7EoCx4LHg0PF1XpXMybxM8KYCxk542X0'
+    // }).then((response) => {
+    //   console.log(response);
+    //   this.test = response.data.message;
+    // })
+  },
+  methods:{
+      showinfo:function(){
+            Axios({
       method: 'get',
-      url: 'http://api.map.baidu.com/place/v2/search?q=饭店&region=北京&output=json&ak=7EoCx4LHg0PF1XpXMybxM8KYCxk542X0'
+      url: 'http://api.map.baidu.com/place/v2/search?q=饭店&region=北京&output=json&ak=7EoCx4LHg0PF1XpXMybxM8KYCxk542X0',
+      // headers: {'X-Requested-With': 'XMLHttpRequest'},
+      // withCredentials: true
     }).then((response) => {
       console.log(response);
-      this.test = response.data.message;
+      this.test = "输出:"+response.data.message+",获取百度api，跨域成功";
     })
   }
+}
 }
 </script>
 

@@ -16762,7 +16762,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "details-four"
   }, [_c('div', {
     staticClass: "picture"
-  }), _vm._v(" "), _c('ul', [_c('li', [_c('h3', [_vm._v("vue.js")]), _vm._v(" "), _c('p', [_vm._v("●声明式渲染")]), _vm._v(" "), _c('p', [_vm._v("●模块化思想")]), _vm._v(" "), _c('p', [_vm._v("●双向数据绑定")])]), _vm._v(" "), _c('li', [_c('h3', [_vm._v("css部分")]), _vm._v(" "), _c('p', [_vm._v("●css3切角")]), _vm._v(" "), _c('p', [_vm._v("●css3动画")]), _vm._v(" "), _c('p', [_vm._v("●sass结合koala实现css预编译")])]), _vm._v(" "), _c('li', [_c('h3', [_vm._v("Jquery")]), _vm._v(" "), _c('p', [_vm._v("●实现选项卡功能")])]), _vm._v(" "), _c('li', [_c('h3', [_vm._v("配色选取")]), _vm._v(" "), _c('p', [_vm._v("●http://colorhunt.co")])])])])
+  }), _vm._v(" "), _c('ul', [_c('li', [_c('h3', [_vm._v("Vue半家桶")]), _vm._v(" "), _c('p', [_vm._v("●.vue单文件组件")]), _vm._v(" "), _c('p', [_vm._v("●vue-router路由")]), _vm._v(" "), _c('p', [_vm._v("●vue路由添加过渡动画")]), _vm._v(" "), _c('p', [_vm._v("●axios跨域请求百度地图api")])]), _vm._v(" "), _c('li', [_c('h3', [_vm._v("Webpack")]), _vm._v(" "), _c('p', [_vm._v("●支持sass--'style-loader', 'css-loader', 'sass-loader'")]), _vm._v(" "), _c('p', [_vm._v("●支持vue单文件组件--'vue-loader'")]), _vm._v(" "), _c('p', [_vm._v("●支持ES6语法--'babel-loader'")]), _vm._v(" "), _c('p', [_vm._v("●支持各种类型图片加载--'file-loader'")]), _vm._v(" "), _c('p', [_vm._v("●支持本地服务器环境--'webpack-dev-server'")])]), _vm._v(" "), _c('li', [_c('h3', [_vm._v("css部分")]), _vm._v(" "), _c('p', [_vm._v("●animate.css动画库")]), _vm._v(" "), _c('p', [_vm._v("●css3切角")]), _vm._v(" "), _c('p', [_vm._v("●原生css3动画")])]), _vm._v(" "), _c('li', [_c('h3', [_vm._v("后端技术")]), _vm._v(" "), _c('p', [_vm._v("●nodejs搭建服务器，路由和事件处理程序")]), _vm._v(" "), _c('p', [_vm._v("●express+mongoose，连接mongodb，管理数据")]), _vm._v(" "), _c('p', [_vm._v("●Ubuntu 16.04.1，腾讯云linux服务器CVM")])])])])
 }]}
 
 /***/ }),
@@ -16810,7 +16810,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.name = $event.target.value
       }
     }
-  }), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.time))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.test))])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.time))]), _vm._v(" "), _c('p', {
+    on: {
+      "click": _vm.showinfo
+    }
+  }, [_vm._v(_vm._s(_vm.test))])]), _vm._v(" "), _c('div', {
     staticClass: "content"
   }, [_c('transition', {
     attrs: {
@@ -17308,22 +17312,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       test: 'fuck you'
     };
   },
+  // props:['test'],
   mounted() {
     //     Jsonp('http://api.map.baidu.com/place/v2/search?q=饭店&region=北京&output=json&ak=7EoCx4LHg0PF1XpXMybxM8KYCxk542X0', null, function (err, data) {
     //   if (err) {
     //     console.error(err.message);
     //   } else {
+    //     // console.log($test);
+    //     console.log(test);        
+    //     $test=data.message;
     //     console.log(data);
-    //     // $data.test=data.message;
     //   }
     // })
-    __WEBPACK_IMPORTED_MODULE_0_axios___default()({
-      method: 'get',
-      url: 'http://api.map.baidu.com/place/v2/search?q=饭店&region=北京&output=json&ak=7EoCx4LHg0PF1XpXMybxM8KYCxk542X0'
-    }).then(response => {
-      console.log(response);
-      this.test = response.data.message;
-    });
+    // Axios({
+    //   method: 'get',
+    //   url: 'http://api.map.baidu.com/place/v2/search?q=饭店&region=北京&output=json&ak=7EoCx4LHg0PF1XpXMybxM8KYCxk542X0'
+    // }).then((response) => {
+    //   console.log(response);
+    //   this.test = response.data.message;
+    // })
+  },
+  methods: {
+    showinfo: function () {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default()({
+        method: 'get',
+        url: 'http://api.map.baidu.com/place/v2/search?q=饭店&region=北京&output=json&ak=7EoCx4LHg0PF1XpXMybxM8KYCxk542X0'
+      }).then(response => {
+        console.log(response);
+        this.test = "输出:" + response.data.message + ",获取百度api，跨域成功";
+      });
+    }
   }
 });
 
