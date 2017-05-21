@@ -1,15 +1,15 @@
 <h2>基于webpack+vue+es6+sass+axios的极简个人简历</h2>
 
 <h3>克隆并运行项目步骤：</h3>
-以下命令在Git Bash/CMD/Powershell中均有效。
-1. 克隆  
-`git clone https://github.com/FrankKai/Vue-Practice.git`
-2. 安装依赖  
-`npm install`
-3. 构建项目  
-`npm run build`
-4. 服务器环境查看  
-`npm run dev`  
+<p>以下命令在Git Bash/CMD/Powershell中均有效。</p>
+<p>1. 克隆 </p> 
+<p>`git clone https://github.com/FrankKai/Vue-Practice.git`</p>
+<p>2. 安装依赖</p>  
+<p>`npm install`</p>
+<p>3. 构建项目</p>  
+<p>`npm run build`</p>
+<p>4. 服务器环境查看</p>  
+<p>`npm run dev`</p>  
 
 <h3>主要技术：</h3>
 <ul>
