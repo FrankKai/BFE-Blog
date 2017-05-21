@@ -3,13 +3,13 @@
 <h3>克隆并运行项目步骤：</h3>
 <p>以下命令在Git Bash/CMD/Powershell中均有效。</p>
 <p>1. 克隆 </p> 
-<p>`git clone https://github.com/FrankKai/Vue-Practice.git`</p>
+`git clone https://github.com/FrankKai/Vue-Practice.git`
 <p>2. 安装依赖</p>  
-<p>`npm install`</p>
+`npm install`
 <p>3. 构建项目</p>  
-<p>`npm run build`</p>
+`npm run build`
 <p>4. 服务器环境查看</p>  
-<p>`npm run dev`</p>  
+`npm run dev` 
 
 <h3>主要技术：</h3>
 <ul>
