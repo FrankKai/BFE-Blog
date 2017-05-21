@@ -1,6 +1,6 @@
 <h2>基于webpack+vue+es6+sass+axios的极简个人简历</h2>
 
-克隆并运行项目步骤：
+**克隆并运行项目步骤：**
 以下命令在Git Bash/CMD/Powershell中均有效。
 1. 克隆  
 `git clone https://github.com/FrankKai/Vue-Practice.git`
@@ -11,7 +11,7 @@
 4. 服务器环境查看  
 `npm run dev` 
 
-<h3>主要技术：</h3>
+**主要技术：**
 <ul>
     <li>
 	<h4>Vue半家桶</h4>
@@ -43,8 +43,9 @@
     </li>
 </ul>
 
+
+**待添加功能：**
 <ul>
-<h3>待添加功能：</h3>
 <li>1. 将静态个人简历向动态博客转换</li>   
 <li>2. 添加博客生成功能，后台push前端展现</li>   
 <li>3. 添加博客路由分类功能</li>   
@@ -55,8 +56,8 @@
 <li>8. 添加发送邮件功能</li>   
 </ul>
 
-开发日志：  
-**1.重新建库，基于个人博客学vue√**  
+**开发日志:**  
+**1.重新建库，基于个人博客学vue√**  
 **2.加入webpack工具√**  
 注意：vscode中的webpack插件需要先有package.json文件才能初始化，之后再npm install  
 正确做法事：`npm install webpack --save-dev`  
