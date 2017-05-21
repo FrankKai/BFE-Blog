@@ -1,14 +1,14 @@
 <h2>基于webpack+vue+es6+sass+axios的极简个人简历</h2>
 
-<h3>克隆并运行项目步骤：</h3>
-<p>以下命令在Git Bash/CMD/Powershell中均有效。</p>
-<p>1. 克隆 </p> 
+克隆并运行项目步骤：
+以下命令在Git Bash/CMD/Powershell中均有效。
+1. 克隆  
 `git clone https://github.com/FrankKai/Vue-Practice.git`
-<p>2. 安装依赖</p>  
+2. 安装依赖  
 `npm install`
-<p>3. 构建项目</p>  
+3. 构建项目  
 `npm run build`
-<p>4. 服务器环境查看</p>  
+4. 服务器环境查看  
 `npm run dev` 
 
 <h3>主要技术：</h3>
@@ -55,7 +55,7 @@
 <li>8. 添加发送邮件功能</li>   
 </ul>
 
-<h3>开发日志：</h3>
+开发日志：
 **1.重新建库，基于个人博客学vue√**  
 **2.加入webpack工具√**  
 注意：vscode中的webpack插件需要先有package.json文件才能初始化，之后再npm install  
