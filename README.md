@@ -1,4 +1,4 @@
-##基于webpack+vue+es6+sass+axios的极简个人简历
+<h2>基于webpack+vue+es6+sass+axios的极简个人简历</h2>
 
 克隆并运行项目步骤：
 以下命令在Git Bash/CMD/Powershell中均有效。
@@ -42,7 +42,8 @@
 		<p>●Python Django搭建后台管理平台</p>	
             </li>
         </ul>
-待添加功能：
+
+<h2>待添加功能：</h2>  
 1. 将静态个人简历向动态博客转换
 2. 添加博客生成功能，后台push前端展现
 3. 添加博客路由分类功能
