@@ -1,3 +1,7 @@
+如何运行项目：
+`git`
+
+
 **1.重新建库，基于个人博客学vue√**  
 **2.加入webpack工具√**  
 注意：vscode中的webpack插件需要先有package.json文件才能初始化，之后再npm install  
