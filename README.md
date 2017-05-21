@@ -29,7 +29,8 @@
 	<p>●支持本地服务器环境--'webpack-dev-server'</p>
     </li>
     <li>
-	<h4>css部分</h4>
+	<h4>sass部分</h4>
+	<p>●sass模块化</p>
 	<p>●animate.css动画库</p>
 	<p>●css3切角</p>
 	<p>●原生css3动画</p>
@@ -56,7 +57,8 @@
 <li>添加发送邮件功能</li>   
 </ul>
 
-**开发日志：**  
+**开发日志：**  
+
 **1. 重新建库，基于个人博客学vue√**  
 **2. 加入webpack工具√**  
 注意：vscode中的webpack插件需要先有package.json文件才能初始化，之后再npm install  
