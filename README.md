@@ -55,7 +55,7 @@
 <li>8. 添加发送邮件功能</li>   
 </ul>
 
-开发日志：
+开发日志：  
 **1.重新建库，基于个人博客学vue√**  
 **2.加入webpack工具√**  
 注意：vscode中的webpack插件需要先有package.json文件才能初始化，之后再npm install  
