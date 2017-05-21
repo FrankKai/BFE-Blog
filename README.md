@@ -1,6 +1,6 @@
 <h2>基于webpack+vue+es6+sass+axios的极简个人简历</h2>
 
-克隆并运行项目步骤：
+<h3>克隆并运行项目步骤：</h3>
 以下命令在Git Bash/CMD/Powershell中均有效。
 1. 克隆  
 `git clone https://github.com/FrankKai/Vue-Practice.git`
@@ -11,17 +11,17 @@
 4. 服务器环境查看  
 `npm run dev`  
 
-主要技术：
+<h3>主要技术：</h3>
 <ul>
     <li>
-	<h3>Vue半家桶</h3>
+	<h4>Vue半家桶</h4>
 	<p>●.vue单文件组件</p>
 	<p>●vue-router路由</p>
 	<p>●vue路由添加过渡动画</p>
 	<p>●axios跨域请求百度地图api</p>
     </li>
     <li>
-	<h3>Webpack</h3>
+	<h4>Webpack</h4>
 	<p>●支持sass--'style-loader', 'css-loader', 'sass-loader'</p>
 	<p>●支持vue单文件组件--'vue-loader'</p>
 	<p>●支持ES6语法--'babel-loader'</p>
@@ -29,13 +29,13 @@
 	<p>●支持本地服务器环境--'webpack-dev-server'</p>
     </li>
     <li>
-	<h3>css部分</h3>
+	<h4>css部分</h4>
 	<p>●animate.css动画库</p>
 	<p>●css3切角</p>
 	<p>●原生css3动画</p>
     </li>
     <li>
-	<h3>后端技术（摸索中，未体现在博客中）</h3>
+    <h4>后端技术（摸索中，未体现在博客中）</h4>
 	<p>●nodejs搭建服务器，路由和事件处理程序</p> 
 	<p>●express+mongoose，连接mongodb，管理数据</p>
 	<p>●Ubuntu 16.04.1，腾讯云linux服务器CVM</p>
@@ -55,7 +55,7 @@
 <li>8. 添加发送邮件功能</li>   
 </ul>
 
-<h2>开发日志：</h2>
+<h3>开发日志：</h3>
 **1.重新建库，基于个人博客学vue√**  
 **2.加入webpack工具√**  
 注意：vscode中的webpack插件需要先有package.json文件才能初始化，之后再npm install  
