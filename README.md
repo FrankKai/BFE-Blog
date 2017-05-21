@@ -1,8 +1,16 @@
-如何运行项目：
-`git`
-
-
-**1.重新建库，基于个人博客学vue√**  
+克隆并运行项目步骤：
+以下命令在Git Bash/CMD/Powershell中均有效。
+1. 克隆  
+`git clone https://github.com/FrankKai/Vue-Practice.git`
+2. 安装依赖  
+`npm install`
+3. 构建项目  
+`npm run build`
+4. 服务器环境查看  
+`npm run dev`
+主要技术：
+1. 
+**1.重新建库，基于个人博客学vue√**  
 **2.加入webpack工具√**  
 注意：vscode中的webpack插件需要先有package.json文件才能初始化，之后再npm install  
 正确做法事：`npm install webpack --save-dev`  
