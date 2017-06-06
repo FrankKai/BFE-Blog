@@ -3,18 +3,18 @@
     <div class="main">
       <div class="sidebar">
         <h1> {{name}} </h1>
-        <ul>
+        <ul v-for="item in items">
           <li>
-            <router-link to="/info">个人简历</router-link>
+            <router-link to="/info">{{item.categoryOne}}</router-link>
           </li>
           <li>
-            <router-link to="/hdu">我的大学</router-link>
+            <router-link to="/hdu">{{item.categoryTwo}}</router-link>
           </li>
           <li>
-            <router-link to="/test1">成长之路</router-link>
+            <router-link to="/test1">{{item.categoryThree}}</router-link>
           </li>
           <li>
-            <router-link to="/test2">博客技术</router-link>
+            <router-link to="/test2">{{item.categoryFour}}</router-link>
           </li>
         </ul>
         <input v-model="name"></input>
@@ -42,7 +42,8 @@ export default {
       msg: 'Welcome to Your Vue.js App',
       name: '趁你还年轻',
       time: '最后加载时间为：' + new Date(),
-      test: 'fuck you'
+      test: 'fuck you',
+      items:[{categoryOne:"个人简历"},{categoryTwo:"我的大学"},{categoryThree:"成长之路"},{categoryFour:"博客技术"}]
     }
   },
   // props:['test'],

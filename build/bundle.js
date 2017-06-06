@@ -16778,23 +16778,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "main"
   }, [_c('div', {
     staticClass: "sidebar"
-  }, [_c('h1', [_vm._v(" " + _vm._s(_vm.name) + " ")]), _vm._v(" "), _c('ul', [_c('li', [_c('router-link', {
-    attrs: {
-      "to": "/info"
-    }
-  }, [_vm._v("个人简历")])], 1), _vm._v(" "), _c('li', [_c('router-link', {
-    attrs: {
-      "to": "/hdu"
-    }
-  }, [_vm._v("我的大学")])], 1), _vm._v(" "), _c('li', [_c('router-link', {
-    attrs: {
-      "to": "/test1"
-    }
-  }, [_vm._v("成长之路")])], 1), _vm._v(" "), _c('li', [_c('router-link', {
-    attrs: {
-      "to": "/test2"
-    }
-  }, [_vm._v("博客技术")])], 1)]), _vm._v(" "), _c('input', {
+  }, [_c('h1', [_vm._v(" " + _vm._s(_vm.name) + " ")]), _vm._v(" "), _vm._l((_vm.items), function(item) {
+    return _c('ul', [_c('li', [_c('router-link', {
+      attrs: {
+        "to": "/info"
+      }
+    }, [_vm._v(_vm._s(item.categoryOne))])], 1), _vm._v(" "), _c('li', [_c('router-link', {
+      attrs: {
+        "to": "/hdu"
+      }
+    }, [_vm._v(_vm._s(item.categoryTwo))])], 1), _vm._v(" "), _c('li', [_c('router-link', {
+      attrs: {
+        "to": "/test1"
+      }
+    }, [_vm._v(_vm._s(item.categoryThree))])], 1), _vm._v(" "), _c('li', [_c('router-link', {
+      attrs: {
+        "to": "/test2"
+      }
+    }, [_vm._v(_vm._s(item.categoryFour))])], 1)])
+  }), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -16814,7 +16816,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.showinfo
     }
-  }, [_vm._v(_vm._s(_vm.test))])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.test))])], 2), _vm._v(" "), _c('div', {
     staticClass: "content"
   }, [_c('transition', {
     attrs: {
@@ -17309,7 +17311,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       msg: 'Welcome to Your Vue.js App',
       name: '趁你还年轻',
       time: '最后加载时间为：' + new Date(),
-      test: 'fuck you'
+      test: 'fuck you',
+      items: [{ categoryOne: "个人简历" }, { categoryTwo: "我的大学" }, { categoryThree: "成长之路" }, { categoryFour: "博客技术" }]
     };
   },
   // props:['test'],
