@@ -1,60 +1,71 @@
 <template id="box-template-one">
     <div class="details-one">
         <div class="picture"></div>
-        <h3>个人信息</h3>
+        <h3>{{personalData.name}}</h3>
         <ul>
-            <li>
-                <p>高 凯 男  22岁  杭州 2017届本科毕业生 15988405210 gaokai20100801@qq.com</p>
-            </li>
+            <li v-for="item in personalData.info">{{item}}</li>
         </ul>
-        <h3> 教育经历 </h3>
+        <h3> {{educationalExperience.name}} </h3>
         <ul>
-            <li> 2010.09 - 2013.06 鄂尔多斯市第一中学（内蒙古自治区首批重点中学） </li>
-            <li> 2013.09 - 至今 杭州电子科技大学（浙江省首批重点建设的5所高校之一） 通信工程学院 本科 </li>
+            <li v-for="item in educationalExperience.info">{{item}}</li>
         </ul>
-        <h3> 实习经历 </h3>
+        <h3> {{internExperience.name}} </h3>
         <ul>
-            <li>
-                <p>2014年5月  - 2014年6月 </p>
-                <p>●龙湖地产—售楼部</p>
-            </li>
-            <li>
-                <p>2015年5月  - 2015年6月 </p>
-                <p>●去哪儿网杭州分部—销售部</p>
-            </li>
-            <li>
-                <p>2016年7月  - 2016年10月 </p>
-                <p>●浙江和仁科技股份有限公司—前端开发部</p>
-            </li>
+            <li v-for="item in internExperience.info">{{item}}</li>
         </ul>
-        <h3> 参与项目 </h3>
+        <h3> {{involvedProjects.name}} </h3>
         <ul>
-            <li> ●参与龙湖时代天街停车位售卖 </li>
-            <li> ●参与去哪儿网APP进酒店推广 </li>
-            <li> ●参与“云医疗”项目移动端和PC端的前端开发 </li>
+            <li v-for="item in involvedProjects.info">{{item}}</li>
         </ul>
-        <h3> 学生工作经历 </h3>
+        <h3> {{studentsWorkingExperience.name}} </h3>
         <ul>
-            <li> ●班级组织委员、学生会干事 </li>
-            <li> ●杭州电子科技大学图书馆管理员 </li>
-            <li> ●杭州电子科技大学篮球裁判俱乐部裁判 </li>
-            <li> ●杭州电子科技大学青年志愿者协会办公室部长 </li>
+            <li v-for="item in studentsWorkingExperience.info">{{item}}</li>
         </ul>
-        <h3> 证书及获奖经历 </h3>
+        <h3> {{certificateAndWinningExperience.name}} </h3>
         <ul>
-            <li> ●大学英语四级证书 </li>
-            <li> ●中国注册志愿者证书 </li>
-            <li> ●通信工程学院学生工作奖、学习优胜奖 </li>
-            <li> ●杭州电子科技大学青年志愿者协会优秀干事 </li>
+            <li v-for="item in certificateAndWinningExperience.info">{{item}}</li>
         </ul>
-        <h3> 自我评价 </h3>
+        <h3> {{selfEvaluation.name}}</h3>
         <ul>
-            <li> ●工科背景，学习和动手能力较强 </li>
-            <li> ●成绩中上，掌握基础软硬件知识 </li>
-            <li> ●勇于尝试，学生工作和社会实习经历丰富 </li>
-            <li> ●性格开朗，良好的生活习惯和人际交往能力 </li>
-            <li> ●爱好广泛，打篮球，看小说，听音乐，泡图书馆 </li>
-            <li> ●胸怀梦想，希望这个世界因为自己的存在变得好一点 </li>
+            <li v-for="item in selfEvaluation.info">{{item}}</li>
         </ul>
     </div>
 </template>
+
+<script>
+import Axios from 'axios'
+export default {
+  name: 'app',
+  data() {
+    return {
+            personalData:{},
+            educationalExperience:{},
+            internExperience:{},
+            involvedProjects:{},
+            studentsWorkingExperience:{},
+            certificateAndWinningExperience:{},
+            selfEvaluation:{}
+    }
+  },
+    mounted() {
+        this.info();
+    },
+  methods:{
+        info:function(){
+            Axios({
+                method: 'get',
+                url: '../../../data/data.json',
+            }).then((response) => {
+                console.log(response);
+                this.personalData = response.data[0].personalData;
+                this.educationalExperience = response.data[0].educationalExperience;
+                this.internExperience = response.data[0].internExperience;
+                this.involvedProjects = response.data[0].involvedProjects;
+                this.studentsWorkingExperience = response.data[0].studentsWorkingExperience;
+                this.certificateAndWinningExperience = response.data[0].certificateAndWinningExperience;
+                this.selfEvaluation = response.data[0].selfEvaluation;
+            })
+        }
+    }
+}
+</script>
