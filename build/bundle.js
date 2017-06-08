@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 42);
+/******/ 	return __webpack_require__(__webpack_require__.s = 43);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -384,7 +384,7 @@ module.exports = {
   trim: trim
 };
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(44).Buffer))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(45).Buffer))
 
 /***/ }),
 /* 1 */
@@ -445,6 +445,12 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(24);
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -544,7 +550,7 @@ module.exports = defaults;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports) {
 
 /*
@@ -626,7 +632,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -663,7 +669,7 @@ var stylesInDom = {},
 	singletonElement = null,
 	singletonCounter = 0,
 	styleElementsInsertedAtTop = [],
-	fixUrls = __webpack_require__(58);
+	fixUrls = __webpack_require__(59);
 
 module.exports = function(list, options) {
 	if(typeof DEBUG !== "undefined" && DEBUG) {
@@ -922,7 +928,7 @@ function updateLink(linkElement, options, obj) {
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -955,12 +961,6 @@ var n=a(k,b,c)-h,k=k-n/l}h=k}else if(0===l)h=k;else{var k=m,m=m+.1,f=0;do n=k+(m
 e){c["ease"+a.type+b[e]]=g.fnc(d)?d:y.apply($jscomp$this,d)}}(e)),e={type:e.type};return c}(),ia={css:function(a,b,d){return a.style[b]=d},attribute:function(a,b,d){return a.setAttribute(b,d)},object:function(a,b,d){return a[b]=d},transform:function(a,b,d,c,e){c[e]||(c[e]=[]);c[e].push(b+"("+d+")")}},q=[],z=0,ja=function(){function a(){z=requestAnimationFrame(b)}function b(b){var c=q.length;if(c){for(var d=0;d<c;)q[d]&&q[d].tick(b),d++;a()}else cancelAnimationFrame(z),z=0}return a}();n.version="2.0.2";
 n.speed=1;n.running=q;n.remove=function(a){a=M(a);for(var b=q.length;b--;)for(var d=q[b],c=d.animations,e=c.length;e--;)F(a,c[e].animatable.target)&&(c.splice(e,1),c.length||d.pause())};n.getValue=J;n.path=function(a,b){var d=g.str(a)?v(a)[0]:a,c=b||100;return function(a){return{el:d,property:a,totalLength:d.getTotalLength()*(c/100)}}};n.setDashoffset=function(a){var b=a.getTotalLength();a.setAttribute("stroke-dasharray",b);return b};n.bezier=y;n.easings=N;n.timeline=function(a){var b=n(a);b.pause();
 b.duration=0;b.add=function(a){b.children.forEach(function(a){a.began=!0;a.completed=!0});w(a).forEach(function(a){var c=b.duration,d=a.offset;a.autoplay=!1;a.offset=g.und(d)?c:K(d,c);b.seek(a.offset);a=n(a);a.duration>c&&(b.duration=a.duration);a.began=!0;b.children.push(a)});b.reset();b.seek(0);b.autoplay&&b.restart();return b};return b};n.random=function(a,b){return Math.floor(Math.random()*(b-a+1))+a};return n});
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(24);
 
 /***/ }),
 /* 7 */
@@ -1452,10 +1452,10 @@ module.exports = g;
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(46);
+var content = __webpack_require__(47);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, {});
+var update = __webpack_require__(5)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -1478,10 +1478,10 @@ if(false) {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(47);
+var content = __webpack_require__(48);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, {});
+var update = __webpack_require__(5)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -1504,10 +1504,10 @@ if(false) {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(48);
+var content = __webpack_require__(49);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, {});
+var update = __webpack_require__(5)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -1531,7 +1531,7 @@ var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(41),
   /* template */
-  __webpack_require__(63),
+  __webpack_require__(64),
   /* scopeId */
   null,
   /* cssModules */
@@ -1549,7 +1549,7 @@ var Component = __webpack_require__(1)(
   /* script */
   null,
   /* template */
-  __webpack_require__(62),
+  __webpack_require__(63),
   /* scopeId */
   null,
   /* cssModules */
@@ -1565,9 +1565,9 @@ module.exports = Component.exports
 
 var Component = __webpack_require__(1)(
   /* script */
-  null,
+  __webpack_require__(42),
   /* template */
-  __webpack_require__(61),
+  __webpack_require__(62),
   /* scopeId */
   null,
   /* cssModules */
@@ -1585,7 +1585,7 @@ var Component = __webpack_require__(1)(
   /* script */
   null,
   /* template */
-  __webpack_require__(59),
+  __webpack_require__(60),
   /* scopeId */
   null,
   /* cssModules */
@@ -1603,7 +1603,7 @@ var Component = __webpack_require__(1)(
   /* script */
   null,
   /* template */
-  __webpack_require__(60),
+  __webpack_require__(61),
   /* scopeId */
   null,
   /* cssModules */
@@ -13775,7 +13775,7 @@ Vue$3.compile = compileToFunctions;
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(11);
 var Axios = __webpack_require__(26);
-var defaults = __webpack_require__(2);
+var defaults = __webpack_require__(3);
 
 /**
  * Create an instance of Axios
@@ -13895,7 +13895,7 @@ module.exports = CancelToken;
 "use strict";
 
 
-var defaults = __webpack_require__(2);
+var defaults = __webpack_require__(3);
 var utils = __webpack_require__(0);
 var InterceptorManager = __webpack_require__(27);
 var dispatchRequest = __webpack_require__(28);
@@ -14049,7 +14049,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(31);
 var isCancel = __webpack_require__(9);
-var defaults = __webpack_require__(2);
+var defaults = __webpack_require__(3);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -14608,11 +14608,11 @@ module.exports = function spread(callback) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jsonp__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jsonp__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jsonp___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_jsonp__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_animejs__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_animejs__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_animejs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_animejs__);
 //
 //
@@ -14658,7 +14658,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       msg: 'Welcome to Your Vue.js App',
       name: '趁你还年轻',
       time: '最后加载时间为：' + new Date(),
-      test: 'fuck you'
+      test: 'fuck you',
+      items: [{ categoryOne: "个人简历" }, { categoryTwo: "我的大学" }, { categoryThree: "成长之路" }, { categoryFour: "博客技术" }]
     };
   },
   // props:['test'],
@@ -14702,6 +14703,85 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'app',
+    data() {
+        return {
+            personalData: {},
+            educationalExperience: {},
+            internExperience: {},
+            involvedProjects: {},
+            studentsWorkingExperience: {},
+            certificateAndWinningExperience: {},
+            selfEvaluation: {}
+        };
+    },
+    mounted() {
+        this.info();
+    },
+    methods: {
+        info: function () {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default()({
+                method: 'get',
+                url: '../../../data/data.json'
+            }).then(response => {
+                console.log(response);
+                this.personalData = response.data[0].personalData;
+                this.educationalExperience = response.data[0].educationalExperience;
+                this.internExperience = response.data[0].internExperience;
+                this.involvedProjects = response.data[0].involvedProjects;
+                this.studentsWorkingExperience = response.data[0].studentsWorkingExperience;
+                this.certificateAndWinningExperience = response.data[0].certificateAndWinningExperience;
+                this.selfEvaluation = response.data[0].selfEvaluation;
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 43 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_normalize_css__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_normalize_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_normalize_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_animate_css__ = __webpack_require__(14);
@@ -14720,9 +14800,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_test2_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_test2_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__App_vue__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__App_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_axios__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_animejs__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_animejs__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_animejs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_animejs__);
 
 
@@ -14764,7 +14844,7 @@ new __WEBPACK_IMPORTED_MODULE_3_vue__["a" /* default */]({
 });
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14885,7 +14965,7 @@ function fromByteArray (uint8) {
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14899,9 +14979,9 @@ function fromByteArray (uint8) {
 
 
 
-var base64 = __webpack_require__(43)
-var ieee754 = __webpack_require__(55)
-var isArray = __webpack_require__(45)
+var base64 = __webpack_require__(44)
+var ieee754 = __webpack_require__(56)
+var isArray = __webpack_require__(46)
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -16682,7 +16762,7 @@ function isnan (val) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -16693,10 +16773,10 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(undefined);
+exports = module.exports = __webpack_require__(4)(undefined);
 // imports
 
 
@@ -16707,10 +16787,10 @@ exports.push([module.i, "@charset \"UTF-8\";\n\n/*!\n * animate.css -http://dane
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(undefined);
+exports = module.exports = __webpack_require__(4)(undefined);
 // imports
 
 
@@ -16721,21 +16801,21 @@ exports.push([module.i, "/*! normalize.css v6.0.0 | MIT License | github.com/nec
 
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(undefined);
+exports = module.exports = __webpack_require__(4)(undefined);
 // imports
 
 
 // module
-exports.push([module.i, ".main {\n  width: 100%;\n  height: 100%; }\n\nhtml {\n  background: #FBE8D3; }\n\n@keyframes bounce {\n  60%,\n  80%,\n  to {\n    transform: translateY(300px);\n    animation-timing-function: ease; }\n  70% {\n    transform: translateY(200px); }\n  90% {\n    transform: translateY(260px); } }\n\nhtml,\nbody,\np,\nul,\nli,\nh1,\nh2,\nh3,\nh4 {\n  padding: 0;\n  margin: 0; }\n\nul {\n  list-style: none; }\n\n.sidebar {\n  position: fixed;\n  top: 50px;\n  left: 3%;\n  width: 20%;\n  text-align: center;\n  background: #70A1D7;\n  background: linear-gradient(135deg, transparent 20px, #70A1D7 0) top left, linear-gradient(225deg, transparent 20px, #70A1D7 0) top right, linear-gradient(-45deg, transparent 20px, #70A1D7 0) bottom right, linear-gradient(45deg, transparent 20px, #70A1D7 0) bottom left;\n  background-size: 51% 51%;\n  background-repeat: no-repeat;\n  padding: 40px 0;\n  opacity: 0.8; }\n\n.todos {\n  height: 30px;\n  background: #F47C7C;\n  background: linear-gradient(135deg, transparent 15px, #F47C7C 0) top left, linear-gradient(225deg, transparent 15px, #F47C7C 0) top right, linear-gradient(-45deg, transparent 15px, #F47C7C 0) bottom right, linear-gradient(45deg, transparent 15px, #F47C7C 0) bottom left;\n  background-size: 51% 51%;\n  background-repeat: no-repeat; }\n\n.sidebar li {\n  position: relative;\n  font-size: 24px;\n  margin: 10px;\n  cursor: pointer;\n  color: #fff; }\n  .sidebar li a {\n    text-decoration: none;\n    color: #fff;\n    font-size: 20px; }\n\n.sidebar h1 {\n  width: 80%;\n  padding: 20px;\n  margin: auto;\n  background: #F7F48B;\n  background: linear-gradient(135deg, transparent 15px, #F7F48B 0) top left, linear-gradient(225deg, transparent 15px, #F7F48B 0) top right, linear-gradient(-45deg, transparent 15px, #F7F48B 0) bottom right, linear-gradient(45deg, transparent 15px, #F7F48B 0) bottom left;\n  background-size: 51% 51%;\n  background-repeat: no-repeat; }\n\n.sidebar input {\n  line-height: 2;\n  text-align: center; }\n\n.sidebar p {\n  color: #fff;\n  font-size: 5px;\n  margin-top: 15px; }\n\n.content {\n  width: 69%;\n  margin-top: 50px;\n  margin-left: 27%;\n  margin-bottom: 50px;\n  background: rgba(0, 0, 255, 0.1);\n  background: #A1DE93;\n  background: linear-gradient(135deg, transparent 20px, #A1DE93 0) top left, linear-gradient(225deg, transparent 20px, #A1DE93 0) top right, linear-gradient(-45deg, transparent 20px, #A1DE93 0) bottom right, linear-gradient(45deg, transparent 20px, #A1DE93 0) bottom left;\n  background-size: 51% 51%;\n  background-repeat: no-repeat;\n  opacity: 0.8; }\n\n.content h3 {\n  color: #283739;\n  padding: 10px;\n  background: #F7F48B;\n  border-radius: 10px; }\n\n.content li {\n  font-weight: bold;\n  color: #6C7A89; }\n\n.details-one {\n  width: 60%;\n  margin: auto;\n  padding: 50px; }\n\n.details-one li {\n  padding: 5px;\n  font-size: 20px; }\n\n.details-one h1 {\n  padding: 10px 0; }\n\n.details-one .picture {\n  width: 100%;\n  height: 240px;\n  background: url(" + __webpack_require__(51) + ") center no-repeat;\n  position: relative;\n  top: -320px;\n  animation: bounce 2s cubic-bezier(0.1, 0.25, 1, 0.25) forwards; }\n\n.details-two {\n  width: 60%;\n  margin: auto;\n  padding-top: 50px;\n  padding-bottom: 50px; }\n  .details-two li {\n    padding: 10px;\n    font-size: 20px; }\n  .details-two .picture {\n    width: 100%;\n    height: 300px;\n    background: url(" + __webpack_require__(52) + ") center no-repeat;\n    background-size: contain;\n    position: relative;\n    top: -320px;\n    animation: bounce 2s cubic-bezier(0.1, 0.25, 1, 0.25) forwards; }\n\n.details-three {\n  width: 60%;\n  margin: auto;\n  padding-top: 50px;\n  padding-bottom: 50px; }\n  .details-three li {\n    padding: 10px;\n    font-size: 20px; }\n    .details-three li p {\n      text-indent: 40px; }\n  .details-three .picture {\n    width: 100%;\n    height: 300px;\n    background: url(" + __webpack_require__(54) + ") center no-repeat;\n    background-size: contain;\n    position: relative;\n    top: -320px;\n    animation: bounce 2s cubic-bezier(0.1, 0.25, 1, 0.25) forwards; }\n\n.details-four {\n  width: 80%;\n  margin: auto;\n  padding-top: 50px;\n  padding-bottom: 50px; }\n  .details-four li {\n    padding: 10px;\n    font-size: 20px; }\n  .details-four .picture {\n    width: 100%;\n    height: 300px;\n    filter: grayscale(100%);\n    transition: all 0.3s ease;\n    opacity: 0.66;\n    background: url(" + __webpack_require__(53) + ") center no-repeat;\n    background-size: contain;\n    position: relative;\n    top: -320px;\n    animation: bounce 2s cubic-bezier(0.1, 0.25, 1, 0.25) forwards; }\n    .details-four .picture:hover {\n      filter: none;\n      opacity: 1; }\n", ""]);
+exports.push([module.i, ".main {\n  width: 100%;\n  height: 100%; }\n\nhtml {\n  background: #FBE8D3; }\n\n@keyframes bounce {\n  60%,\n  80%,\n  to {\n    transform: translateY(300px);\n    animation-timing-function: ease; }\n  70% {\n    transform: translateY(200px); }\n  90% {\n    transform: translateY(260px); } }\n\nhtml,\nbody,\np,\nul,\nli,\nh1,\nh2,\nh3,\nh4 {\n  padding: 0;\n  margin: 0; }\n\nul {\n  list-style: none; }\n\n.sidebar {\n  position: fixed;\n  top: 50px;\n  left: 3%;\n  width: 20%;\n  text-align: center;\n  background: #70A1D7;\n  background: linear-gradient(135deg, transparent 20px, #70A1D7 0) top left, linear-gradient(225deg, transparent 20px, #70A1D7 0) top right, linear-gradient(-45deg, transparent 20px, #70A1D7 0) bottom right, linear-gradient(45deg, transparent 20px, #70A1D7 0) bottom left;\n  background-size: 51% 51%;\n  background-repeat: no-repeat;\n  padding: 40px 0;\n  opacity: 0.8; }\n\n.todos {\n  height: 30px;\n  background: #F47C7C;\n  background: linear-gradient(135deg, transparent 15px, #F47C7C 0) top left, linear-gradient(225deg, transparent 15px, #F47C7C 0) top right, linear-gradient(-45deg, transparent 15px, #F47C7C 0) bottom right, linear-gradient(45deg, transparent 15px, #F47C7C 0) bottom left;\n  background-size: 51% 51%;\n  background-repeat: no-repeat; }\n\n.sidebar li {\n  position: relative;\n  font-size: 24px;\n  margin: 10px;\n  cursor: pointer;\n  color: #fff; }\n  .sidebar li a {\n    text-decoration: none;\n    color: #fff;\n    font-size: 20px; }\n\n.sidebar h1 {\n  width: 80%;\n  padding: 20px;\n  margin: auto;\n  background: #F7F48B;\n  background: linear-gradient(135deg, transparent 15px, #F7F48B 0) top left, linear-gradient(225deg, transparent 15px, #F7F48B 0) top right, linear-gradient(-45deg, transparent 15px, #F7F48B 0) bottom right, linear-gradient(45deg, transparent 15px, #F7F48B 0) bottom left;\n  background-size: 51% 51%;\n  background-repeat: no-repeat; }\n\n.sidebar input {\n  line-height: 2;\n  text-align: center; }\n\n.sidebar p {\n  color: #fff;\n  font-size: 5px;\n  margin-top: 15px; }\n\n.content {\n  width: 69%;\n  margin-top: 50px;\n  margin-left: 27%;\n  margin-bottom: 50px;\n  background: rgba(0, 0, 255, 0.1);\n  background: #A1DE93;\n  background: linear-gradient(135deg, transparent 20px, #A1DE93 0) top left, linear-gradient(225deg, transparent 20px, #A1DE93 0) top right, linear-gradient(-45deg, transparent 20px, #A1DE93 0) bottom right, linear-gradient(45deg, transparent 20px, #A1DE93 0) bottom left;\n  background-size: 51% 51%;\n  background-repeat: no-repeat;\n  opacity: 0.8; }\n\n.content h3 {\n  color: #283739;\n  padding: 10px;\n  background: #F7F48B;\n  border-radius: 10px; }\n\n.content li {\n  font-weight: bold;\n  color: #6C7A89; }\n\n.details-one {\n  width: 60%;\n  margin: auto;\n  padding: 50px; }\n\n.details-one li {\n  padding: 5px;\n  font-size: 20px; }\n\n.details-one h1 {\n  padding: 10px 0; }\n\n.details-one .picture {\n  width: 100%;\n  height: 240px;\n  background: url(" + __webpack_require__(52) + ") center no-repeat;\n  position: relative;\n  top: -320px;\n  animation: bounce 2s cubic-bezier(0.1, 0.25, 1, 0.25) forwards; }\n\n.details-two {\n  width: 60%;\n  margin: auto;\n  padding-top: 50px;\n  padding-bottom: 50px; }\n  .details-two li {\n    padding: 10px;\n    font-size: 20px; }\n  .details-two .picture {\n    width: 100%;\n    height: 300px;\n    background: url(" + __webpack_require__(53) + ") center no-repeat;\n    background-size: contain;\n    position: relative;\n    top: -320px;\n    animation: bounce 2s cubic-bezier(0.1, 0.25, 1, 0.25) forwards; }\n\n.details-three {\n  width: 60%;\n  margin: auto;\n  padding-top: 50px;\n  padding-bottom: 50px; }\n  .details-three li {\n    padding: 10px;\n    font-size: 20px; }\n    .details-three li p {\n      text-indent: 40px; }\n  .details-three .picture {\n    width: 100%;\n    height: 300px;\n    background: url(" + __webpack_require__(55) + ") center no-repeat;\n    background-size: contain;\n    position: relative;\n    top: -320px;\n    animation: bounce 2s cubic-bezier(0.1, 0.25, 1, 0.25) forwards; }\n\n.details-four {\n  width: 80%;\n  margin: auto;\n  padding-top: 50px;\n  padding-bottom: 50px; }\n  .details-four li {\n    padding: 10px;\n    font-size: 20px; }\n  .details-four .picture {\n    width: 100%;\n    height: 300px;\n    filter: grayscale(100%);\n    transition: all 0.3s ease;\n    opacity: 0.66;\n    background: url(" + __webpack_require__(54) + ") center no-repeat;\n    background-size: contain;\n    position: relative;\n    top: -320px;\n    animation: bounce 2s cubic-bezier(0.1, 0.25, 1, 0.25) forwards; }\n    .details-four .picture:hover {\n      filter: none;\n      opacity: 1; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {/**
@@ -16744,7 +16824,7 @@ exports.push([module.i, ".main {\n  width: 100%;\n  height: 100%; }\n\nhtml {\n 
  * Expose `debug()` as the module.
  */
 
-exports = module.exports = __webpack_require__(50);
+exports = module.exports = __webpack_require__(51);
 exports.log = log;
 exports.formatArgs = formatArgs;
 exports.save = save;
@@ -16927,7 +17007,7 @@ function localstorage() {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -16943,7 +17023,7 @@ exports.coerce = coerce;
 exports.disable = disable;
 exports.enable = enable;
 exports.enabled = enabled;
-exports.humanize = __webpack_require__(57);
+exports.humanize = __webpack_require__(58);
 
 /**
  * The currently active debug mode names, and names to skip.
@@ -17135,31 +17215,31 @@ function coerce(val) {
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports) {
 
 module.exports = "build/images/avatar.jpg";
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports) {
 
 module.exports = "build/images/progresses.jpg";
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports) {
 
 module.exports = "build/images/skills.png";
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports) {
 
 module.exports = "build/images/university.jpg";
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports) {
 
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -17249,14 +17329,14 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
  * Module dependencies
  */
 
-var debug = __webpack_require__(49)('jsonp');
+var debug = __webpack_require__(50)('jsonp');
 
 /**
  * Module exports.
@@ -17352,7 +17432,7 @@ function jsonp(url, opts, fn){
 
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports) {
 
 /**
@@ -17510,7 +17590,7 @@ function plural(ms, n, name) {
 
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports) {
 
 
@@ -17605,7 +17685,7 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -17659,7 +17739,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -17673,21 +17753,33 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "details-one"
   }, [_c('div', {
     staticClass: "picture"
-  }), _vm._v(" "), _c('h3', [_vm._v("个人信息")]), _vm._v(" "), _c('ul', [_c('li', [_c('p', [_vm._v("高 凯 男  22岁  杭州 2017届本科毕业生 15988405210 gaokai20100801@qq.com")])])]), _vm._v(" "), _c('h3', [_vm._v(" 教育经历 ")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v(" 2010.09 - 2013.06 鄂尔多斯市第一中学（内蒙古自治区首批重点中学） ")]), _vm._v(" "), _c('li', [_vm._v(" 2013.09 - 至今 杭州电子科技大学（浙江省首批重点建设的5所高校之一） 通信工程学院 本科 ")])]), _vm._v(" "), _c('h3', [_vm._v(" 实习经历 ")]), _vm._v(" "), _c('ul', [_c('li', [_c('p', [_vm._v("2014年5月  - 2014年6月 ")]), _vm._v(" "), _c('p', [_vm._v("●龙湖地产—售楼部")])]), _vm._v(" "), _c('li', [_c('p', [_vm._v("2015年5月  - 2015年6月 ")]), _vm._v(" "), _c('p', [_vm._v("●去哪儿网杭州分部—销售部")])]), _vm._v(" "), _c('li', [_c('p', [_vm._v("2016年7月  - 2016年10月 ")]), _vm._v(" "), _c('p', [_vm._v("●浙江和仁科技股份有限公司—前端开发部")])])]), _vm._v(" "), _c('h3', [_vm._v(" 参与项目 ")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v(" ●参与龙湖时代天街停车位售卖 ")]), _vm._v(" "), _c('li', [_vm._v(" ●参与去哪儿网APP进酒店推广 ")]), _vm._v(" "), _c('li', [_vm._v(" ●参与“云医疗”项目移动端和PC端的前端开发 ")])]), _vm._v(" "), _c('h3', [_vm._v(" 学生工作经历 ")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v(" ●班级组织委员、学生会干事 ")]), _vm._v(" "), _c('li', [_vm._v(" ●杭州电子科技大学图书馆管理员 ")]), _vm._v(" "), _c('li', [_vm._v(" ●杭州电子科技大学篮球裁判俱乐部裁判 ")]), _vm._v(" "), _c('li', [_vm._v(" ●杭州电子科技大学青年志愿者协会办公室部长 ")])]), _vm._v(" "), _c('h3', [_vm._v(" 证书及获奖经历 ")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v(" ●大学英语四级证书 ")]), _vm._v(" "), _c('li', [_vm._v(" ●中国注册志愿者证书 ")]), _vm._v(" "), _c('li', [_vm._v(" ●通信工程学院学生工作奖、学习优胜奖 ")]), _vm._v(" "), _c('li', [_vm._v(" ●杭州电子科技大学青年志愿者协会优秀干事 ")])]), _vm._v(" "), _c('h3', [_vm._v(" 自我评价 ")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v(" ●工科背景，学习和动手能力较强 ")]), _vm._v(" "), _c('li', [_vm._v(" ●成绩中上，掌握基础软硬件知识 ")]), _vm._v(" "), _c('li', [_vm._v(" ●勇于尝试，学生工作和社会实习经历丰富 ")]), _vm._v(" "), _c('li', [_vm._v(" ●性格开朗，良好的生活习惯和人际交往能力 ")]), _vm._v(" "), _c('li', [_vm._v(" ●爱好广泛，打篮球，看小说，听音乐，泡图书馆 ")]), _vm._v(" "), _c('li', [_vm._v(" ●胸怀梦想，希望这个世界因为自己的存在变得好一点 ")])])])
-}]}
+  }), _vm._v(" "), _c('h3', [_vm._v(_vm._s(_vm.personalData.name))]), _vm._v(" "), _c('ul', _vm._l((_vm.personalData.info), function(item) {
+    return _c('li', [_vm._v(_vm._s(item))])
+  })), _vm._v(" "), _c('h3', [_vm._v(" " + _vm._s(_vm.educationalExperience.name) + " ")]), _vm._v(" "), _c('ul', _vm._l((_vm.educationalExperience.info), function(item) {
+    return _c('li', [_vm._v(_vm._s(item))])
+  })), _vm._v(" "), _c('h3', [_vm._v(" " + _vm._s(_vm.internExperience.name) + " ")]), _vm._v(" "), _c('ul', _vm._l((_vm.internExperience.info), function(item) {
+    return _c('li', [_vm._v(_vm._s(item))])
+  })), _vm._v(" "), _c('h3', [_vm._v(" " + _vm._s(_vm.involvedProjects.name) + " ")]), _vm._v(" "), _c('ul', _vm._l((_vm.involvedProjects.info), function(item) {
+    return _c('li', [_vm._v(_vm._s(item))])
+  })), _vm._v(" "), _c('h3', [_vm._v(" " + _vm._s(_vm.studentsWorkingExperience.name) + " ")]), _vm._v(" "), _c('ul', _vm._l((_vm.studentsWorkingExperience.info), function(item) {
+    return _c('li', [_vm._v(_vm._s(item))])
+  })), _vm._v(" "), _c('h3', [_vm._v(" " + _vm._s(_vm.certificateAndWinningExperience.name) + " ")]), _vm._v(" "), _c('ul', _vm._l((_vm.certificateAndWinningExperience.info), function(item) {
+    return _c('li', [_vm._v(_vm._s(item))])
+  })), _vm._v(" "), _c('h3', [_vm._v(" " + _vm._s(_vm.selfEvaluation.name))]), _vm._v(" "), _c('ul', _vm._l((_vm.selfEvaluation.info), function(item) {
+    return _c('li', [_vm._v(_vm._s(item))])
+  }))])
+},staticRenderFns: []}
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -17701,7 +17793,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -17713,23 +17805,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "main"
   }, [_c('div', {
     staticClass: "sidebar"
-  }, [_c('h1', [_vm._v(" " + _vm._s(_vm.name) + " ")]), _vm._v(" "), _c('ul', [_c('li', [_c('router-link', {
-    attrs: {
-      "to": "/info"
-    }
-  }, [_vm._v("个人简历")])], 1), _vm._v(" "), _c('li', [_c('router-link', {
-    attrs: {
-      "to": "/hdu"
-    }
-  }, [_vm._v("我的大学")])], 1), _vm._v(" "), _c('li', [_c('router-link', {
-    attrs: {
-      "to": "/test1"
-    }
-  }, [_vm._v("成长之路")])], 1), _vm._v(" "), _c('li', [_c('router-link', {
-    attrs: {
-      "to": "/test2"
-    }
-  }, [_vm._v("博客技术")])], 1)]), _vm._v(" "), _c('input', {
+  }, [_c('h1', [_vm._v(" " + _vm._s(_vm.name) + " ")]), _vm._v(" "), _vm._l((_vm.items), function(item) {
+    return _c('ul', [_c('li', [_c('router-link', {
+      attrs: {
+        "to": "/info"
+      }
+    }, [_vm._v(_vm._s(item.categoryOne))])], 1), _vm._v(" "), _c('li', [_c('router-link', {
+      attrs: {
+        "to": "/hdu"
+      }
+    }, [_vm._v(_vm._s(item.categoryTwo))])], 1), _vm._v(" "), _c('li', [_c('router-link', {
+      attrs: {
+        "to": "/test1"
+      }
+    }, [_vm._v(_vm._s(item.categoryThree))])], 1), _vm._v(" "), _c('li', [_c('router-link', {
+      attrs: {
+        "to": "/test2"
+      }
+    }, [_vm._v(_vm._s(item.categoryFour))])], 1)])
+  }), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -17749,7 +17843,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.showinfo
     }
-  }, [_vm._v(_vm._s(_vm.test))])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.test))])], 2), _vm._v(" "), _c('div', {
     staticClass: "content"
   }, [_c('transition', {
     attrs: {
