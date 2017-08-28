@@ -15246,7 +15246,8 @@ new __WEBPACK_IMPORTED_MODULE_3_vue__["a" /* default */]({
   mounted() {
     __WEBPACK_IMPORTED_MODULE_10_axios___default()({
       method: 'post',
-      url: 'http://localhost:3000/about'
+      url: 'http://localhost:3000/about',
+      data: { user: { username: "dog" } }
     }).then(response => {
       console.log(response);
     });

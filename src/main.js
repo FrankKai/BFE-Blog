@@ -42,7 +42,8 @@ new Vue({
   mounted(){
     Axios({
       method: 'post',
-      url: 'http://localhost:3000/about'
+      url: 'http://localhost:3000/about',
+      data: {user:{username:"dog"}}
     }).then((response) => {
         console.log(response);
     })

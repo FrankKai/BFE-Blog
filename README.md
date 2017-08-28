@@ -313,17 +313,9 @@ https://segmentfault.com/q/1010000009166404/a-1020000009187068
 12. 最后总结一句，只会前端的前端不适好前端
 
 2017年8月28日
-const route = require('koa-route');
-const about = ctx => {
-  ctx.response.body = "post success";
-  // ctx.response.type = 'html';
-  // ctx.response.body = '<a href="/">Index Page</a>';
-};
-const main = ctx => {
-  ctx.response.body = "get success";
-};
-//前端post请求，上传about路由数据
-app.use(route.post('/about', about));
-//前端get请求，请求main路由数据
-app.use(route.get('/', main));
-//app.use(route.get('/about', about));
+1. 完成前端到数据库，数据库到前端关键数据传输流
+    ①前端get查询经路由转发的数据库中的数据zuojiantou
+    get ← koa-route←mongodb
+    ②前端post提交数据经路由转发存入数据库
+    post → koa-body → koa-route → mongodb
+2. 七夕，不关我屌事。
