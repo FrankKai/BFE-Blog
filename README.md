@@ -311,3 +311,19 @@ https://segmentfault.com/q/1010000009166404/a-1020000009187068
 10. 第一次翻译纯英文文章ES8，第一次看完纯英文书YDKJ 
 11. 对Chrome控制台掌握更加熟练，snippets，performance等
 12. 最后总结一句，只会前端的前端不适好前端
+
+2017年8月28日
+const route = require('koa-route');
+const about = ctx => {
+  ctx.response.body = "post success";
+  // ctx.response.type = 'html';
+  // ctx.response.body = '<a href="/">Index Page</a>';
+};
+const main = ctx => {
+  ctx.response.body = "get success";
+};
+//前端post请求，上传about路由数据
+app.use(route.post('/about', about));
+//前端get请求，请求main路由数据
+app.use(route.get('/', main));
+//app.use(route.get('/about', about));

@@ -19,6 +19,8 @@
     "jsonp": "^0.2.1",
     "koa": "^2.3.0",
     "koa-cors": "0.0.16",
+    "koa-route": "^3.2.0",
+    "koa-router": "^7.2.1",
     "mongodb": "^2.2.26",
     "mongoose": "^4.9.9",
     "node-sass": "^4.5.2",

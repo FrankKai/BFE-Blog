@@ -15245,13 +15245,24 @@ new __WEBPACK_IMPORTED_MODULE_3_vue__["a" /* default */]({
   render: h => h(__WEBPACK_IMPORTED_MODULE_9__App_vue___default.a),
   mounted() {
     __WEBPACK_IMPORTED_MODULE_10_axios___default()({
-      method: 'get',
-      url: 'http://localhost:3000'
+      method: 'post',
+      url: 'http://localhost:3000/about'
     }).then(response => {
       console.log(response);
     });
   }
 });
+/*axios.post('/user', {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+*/
 
 /***/ }),
 /* 43 */

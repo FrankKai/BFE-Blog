@@ -41,10 +41,21 @@ new Vue({
   render: h => h(App),
   mounted(){
     Axios({
-      method: 'get',
-      url: 'http://localhost:3000',
+      method: 'post',
+      url: 'http://localhost:3000/about'
     }).then((response) => {
         console.log(response);
     })
   }
 })
+/*axios.post('/user', {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+*/
