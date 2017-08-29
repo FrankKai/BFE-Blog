@@ -1,3 +1,4 @@
+/*前后端通信，跨域，解析，路由*/
 console.log("服务器Koa3000端口已启动");
 const Koa = require('koa');
 const app = new Koa();
@@ -21,7 +22,7 @@ const main = ctx => {
 const route = require('koa-route');
 app.use(route.post('/about', about));
 app.use(route.get('/main', main));
-/*启动服务*/
+/*启动3000端口服务*/
 app.listen(3000);
 
 /*数据库服务，增删改查*/
