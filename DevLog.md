@@ -113,10 +113,10 @@ https://segmentfault.com/q/1010000009166404/a-1020000009187068
 
 2017年8月28日
 1. 完成前端到数据库，数据库到前端关键数据传输流
-    ①前端get查询经路由转发的数据库中的数据zuojiantou
-    get ← koa-route←mongodb
-    ②前端post提交数据经路由转发存入数据库
-    post → koa-body → koa-route → mongodb
+    ① 前端get查询经路由转发的数据库中的数据
+        get ← koa-route←mongodb
+    ② 前端post提交数据经路由转发存入数据库
+        post → koa-body → koa-route → mongodb
 2. 七夕，不关我屌事。
 
 2017年8月30日
