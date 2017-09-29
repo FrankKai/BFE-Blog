@@ -1,4 +1,4 @@
-![博客预览图](https://github.com/FrankKai/Vue-Practice/blob/master/preview/main.png)
+![博客预览图](https://github.com/FrankKai/BFE-Blog/blob/master/src/assets/images/newcover.png)
 <h2>基于webpack+vue+es6+sass+axios的极简个人简历</h2>
 
 **克隆并运行项目步骤：**
