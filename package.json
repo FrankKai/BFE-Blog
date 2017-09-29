@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "personal-vue-practice",
   "main": "webpack.config.js",
-  "dependencies": {},
+  "dependencies": {
+    "cross-env": "^5.0.5",
+    "webpack": "^3.6.0"
+  },
   "devDependencies": {
     "animate.css": "^3.5.2",
     "animejs": "^2.0.2",
@@ -27,7 +30,7 @@
     "koa-router": "^7.2.1",
     "mongodb": "^2.2.26",
     "mongoose": "^4.9.9",
-    "node-sass": "^4.5.2",
+    "node-sass": "^4.5.3",
     "normalize.css": "^6.0.0",
     "sass-loader": "^6.0.3",
     "scss-loader": "^0.0.1",
@@ -42,7 +45,7 @@
     "vue-router": "^2.5.2",
     "vue-template-compiler": "^2.3.0",
     "vuex": "^2.3.1",
-    "webpack-dev-server": "^2.4.5"
+    "webpack-dev-server": "^2.9.1"
   },
   "scripts": {
     "test": "echo hello world",

@@ -15,11 +15,14 @@
         <div class = 'footer'>
             <p>©2017 ❤趁你还年轻</p>
         </div>
+        <particle></particle>
     </div>
 </template>
 <script>
+import particle from "../components/particle.vue"
 export default {
-  name: 'home'
+  name: 'home',
+  components:{particle}
 }
 </script>
 
@@ -48,8 +51,13 @@ a{
     }
 }
 .home {
+    text-align: center;
+    align-self: center;
     div{
         margin: 40px;
+    }
+    .particle{
+        margin:0;
     }
 }
 .avatar{
@@ -70,5 +78,9 @@ a{
         font-weight: bold;
         color:chocolate;
     }
+}
+.header{
+    margin:0;
+    padding: 40px;
 }
 </style>
