@@ -1,7 +1,7 @@
 <template>
     <div class="article">
         <!-- <vue-markdown>**test**</vue-markdown> -->
-        <vue-markdown v-bind:source="mddata">{{mddata}}</vue-markdown>
+        <vue-markdown v-for="item in mddata">{{item}}</vue-markdown>
         <!-- <p>{{mddata}}</p> -->
     </div>
 </template>
@@ -16,7 +16,7 @@ export default {
     data () {
         return {
             msg: 'Welcome to Your Vue.js App',
-            mddata:''
+            mddata:[]
         }
     },
     created() {

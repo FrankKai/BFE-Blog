@@ -27364,11 +27364,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "article"
-  }, [_c('vue-markdown', {
-    attrs: {
-      "source": _vm.mddata
-    }
-  }, [_vm._v(_vm._s(_vm.mddata))])], 1)
+  }, _vm._l((_vm.mddata), function(item) {
+    return _c('vue-markdown', [_vm._v(_vm._s(item))])
+  }))
 },staticRenderFns: []}
 
 /***/ }),
@@ -39364,7 +39362,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data() {
         return {
             msg: 'Welcome to Your Vue.js App',
-            mddata: ''
+            mddata: []
         };
     },
     created() {
