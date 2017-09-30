@@ -5,6 +5,7 @@ Vue.use(Router)
 
 import home from '../page/home.vue'
 import User from '../components/hdu.vue'
+import Article from '../page/article.vue'
 
 export default new Router({
     routes:[
@@ -21,6 +22,11 @@ export default new Router({
         { 
             path: '/home/:id', 
             component: User
+        },
+        {
+            path: '/article',
+            name: 'article',
+            component: Article 
         }
     ]
 })
