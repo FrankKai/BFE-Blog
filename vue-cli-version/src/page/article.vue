@@ -1,14 +1,14 @@
 <template>
     <div class="article">
         <!-- <vue-markdown>**test**</vue-markdown> -->
-        <vue-markdown v-for="item in mddata" :key="item.id">{{item}}</vue-markdown>
+        <vue-markdown>{{article.content}}</vue-markdown>
         <!-- <p>{{mddata}}</p> -->
     </div>
 </template>
 
 <script>
 import VueMarkdown from 'vue-markdown'
-import Axios from 'axios'
+// import Axios from 'axios'
 export default {
     name: 'article',
     components:{VueMarkdown},
@@ -19,20 +19,25 @@ export default {
         }
     },
     created() {
-        Axios.get('http://localhost:3001')
-            .then((res)=>{
-                console.log(res)
-                this.mddata = res.data
-            })
-            .catch((err)=>{
-                console.log(err)
-            })
+        // Axios.get('http://localhost:3001')
+        //     .then((res)=>{
+        //         console.log(res)
+        //         this.mddata = res.data
+        //     })
+        //     .catch((err)=>{
+        //         console.log(err)
+        //     })
     },
     watch: {
         mddata: function(){
             
         }
-    }
+    },
+    computed:{
+      article(){
+        return this.$store.state.currentArticle
+      }
+  }
 }
 </script>
 

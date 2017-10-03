@@ -24,19 +24,24 @@ export default new Router({
             name: 'home',
             component: home
         },
-        { 
-            path: '/home/:id', 
-            component: User
-        },
-        {
-            path: '/article',
-            name: 'article',
-            component: Article 
-        },
+        // { 
+        //     path: '/home/:id', 
+        //     component: User
+        // },
+        // {
+        //     path: '/article',
+        //     name: 'article',
+        //     component: Article 
+        // },
         {
             path: '/blog',
             name: 'blog',
             component: Blog
+        },
+        {
+            path: '/blog:article',
+            name: 'article',
+            component: Article
         },
         {
             path: '/category',

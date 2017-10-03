@@ -1,38 +1,39 @@
 <template>
   <div class="blog">
     <navigation></navigation>
-    <!-- <briefarticle
+    <briefarticle
       v-for="(item, index) in articles"
       v-bind:item="item"
       v-bind:index="index"
       v-bind:key="item.id"
       :title="item.title"
-    ></briefarticle> -->
+    ></briefarticle>
     <!-- <briefarticle></briefarticle> -->
     <blogger></blogger>
     <timestamp></timestamp>
     <!-- <div>{{articles}}</div> -->
-    <vue-markdown class="vue-markdown" v-for="item in articles" :key="item.id">
+    <!-- <vue-markdown class="vue-markdown" v-for="item in articles" :key="item.id">
       {{item.title}}
       {{item.content}}
-    </vue-markdown>
+    </vue-markdown> -->
+    <!-- <vue-markdown># 123</vue-markdown> -->
   </div>
 </template>
 
 <script>
 import navigation from '../components/common/navigation.vue'
-// import briefarticle from '../components/blog/briefarticle.vue'
+import briefarticle from '../components/blog/briefarticle.vue'
 import blogger from '../components/blog/blogger.vue'
 import timestamp from '../components/blog/timestamp.vue'
 import dataApi from '../api/dataapi'
 import { SET_DATA } from '../store/mutation-types'
-import VueMarkdown from 'vue-markdown'
+// import VueMarkdown from 'vue-markdown'
 
 
 
 export default {
   name: 'blog',
-  components: {navigation,/*briefarticle,*/blogger,timestamp,VueMarkdown},
+  components: {navigation,briefarticle,blogger,timestamp/*,VueMarkdown*/},
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'

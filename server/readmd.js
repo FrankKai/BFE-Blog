@@ -33,7 +33,7 @@ fs.readdir('../vue-cli-version/src/article',(err,files)=>{
                 if(err){
                     throw err
                 }else{
-                    obj.title = v
+                    obj.title = v.slice(0,-3)
                     obj.content = data
                     mddataarr.push(obj)
                     obj = {}

@@ -6,11 +6,11 @@
           <el-card :body-style="{ padding: '0px' }">
             <img src="../../assets/logo.png" class="image">
             <div style="padding: 14px;">
-                <span>{{arcindex}}</span>
+                <!-- <span>{{arcindex}}</span> -->
                 <p>{{title}}</p>
                 <div class="bottom clearfix">
                 <time class="time">{{ currentDate }}</time>
-                <el-button type="text" class="button">阅读全文</el-button>
+                <el-button type="text" class="button" @click="filteArticle()">阅读全文</el-button>
                 </div>
             </div>
           </el-card>
@@ -21,10 +21,11 @@
 </template>
 
 <script>
+import { FILTE_ARTICLE } from '../../store/mutation-types'
 export default {
   name: 'birefarticle',
   template: '<birefarticle/>',
-  props:['index','title'],
+  props:['index','title','item'],
   // arcindex:0,
   data () {
     return {
@@ -35,6 +36,12 @@ export default {
   computed:{
     arcindex(){
       return this.index
+    }
+  },
+  methods:{
+    filteArticle: function(){
+      this.$store.commit(FILTE_ARTICLE,this.index);
+      this.$router.push({path:'/blog:article'});
     }
   }
 }
