@@ -1,23 +1,27 @@
 <template>
   <div class="blog">
     <navigation></navigation>
-    <briefarticle
+    <!-- <briefarticle
       v-for="(item, index) in articles"
       v-bind:item="item"
       v-bind:index="index"
       v-bind:key="item.id"
-    ></briefarticle>
+      :title="item.title"
+    ></briefarticle> -->
     <!-- <briefarticle></briefarticle> -->
     <blogger></blogger>
     <timestamp></timestamp>
     <!-- <div>{{articles}}</div> -->
-    <vue-markdown v-for="item in articles" :key="item.id">{{item}}</vue-markdown>
+    <vue-markdown class="vue-markdown" v-for="item in articles" :key="item.id">
+      {{item.title}}
+      {{item.content}}
+    </vue-markdown>
   </div>
 </template>
 
 <script>
 import navigation from '../components/common/navigation.vue'
-import briefarticle from '../components/blog/briefarticle.vue'
+// import briefarticle from '../components/blog/briefarticle.vue'
 import blogger from '../components/blog/blogger.vue'
 import timestamp from '../components/blog/timestamp.vue'
 import dataApi from '../api/dataapi'
@@ -28,7 +32,7 @@ import VueMarkdown from 'vue-markdown'
 
 export default {
   name: 'blog',
-  components: {navigation,briefarticle,blogger,timestamp,VueMarkdown},
+  components: {navigation,/*briefarticle,*/blogger,timestamp,VueMarkdown},
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
@@ -54,6 +58,7 @@ export default {
 <style scoped>
 .blog{
   width: 80%;
+  /* height: 100%; */
 }
 h1, h2 {
   font-weight: normal;
@@ -71,5 +76,9 @@ li {
 
 a {
   color: #42b983;
+}
+.vue-markdown{
+  width: 80%;
+  background: rgba(183,245,222,0.5);
 }
 </style>

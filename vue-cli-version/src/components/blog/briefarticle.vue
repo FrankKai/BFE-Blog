@@ -7,7 +7,7 @@
             <img src="../../assets/logo.png" class="image">
             <div style="padding: 14px;">
                 <span>{{arcindex}}</span>
-                <p>副标题</p>
+                <p>{{title}}</p>
                 <div class="bottom clearfix">
                 <time class="time">{{ currentDate }}</time>
                 <el-button type="text" class="button">阅读全文</el-button>
@@ -24,7 +24,7 @@
 export default {
   name: 'birefarticle',
   template: '<birefarticle/>',
-  props:['index'],
+  props:['index','title'],
   // arcindex:0,
   data () {
     return {

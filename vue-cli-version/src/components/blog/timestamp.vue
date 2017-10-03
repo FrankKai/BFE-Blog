@@ -23,7 +23,7 @@ export default {
 <style scoped>
 .timestamp{
   position: absolute;
-  right:10%;
+  right:5%;
   top:40%;
   width: 20%;
   text-align: center;

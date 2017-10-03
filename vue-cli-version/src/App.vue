@@ -34,7 +34,7 @@ body{
   height: 100%;
   width: 100%;
   position: absolute;
-  background-color: rgba(183,245,222,0.5);
+  /* background-color: rgba(183,245,222,0.5); */
 }
 </style>
   

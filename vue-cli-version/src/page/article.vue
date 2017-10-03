@@ -19,7 +19,7 @@ export default {
         }
     },
     created() {
-        Axios.get('http://localhost:3000')
+        Axios.get('http://localhost:3001')
             .then((res)=>{
                 console.log(res)
                 this.mddata = res.data

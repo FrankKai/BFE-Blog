@@ -28,7 +28,7 @@ export default {
 <style scoped>
 .blogger{
   position: absolute;
-  right:10%;
+  right:5%;
   top:3%;
   width: 20%;
   text-align: center;
