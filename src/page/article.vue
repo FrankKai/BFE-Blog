@@ -8,7 +8,6 @@
 
 <script>
 import VueMarkdown from 'vue-markdown'
-import Marked from 'marked'
 import Axios from 'axios'
 export default {
     name: 'article',
