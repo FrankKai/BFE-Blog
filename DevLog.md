@@ -122,3 +122,7 @@ https://segmentfault.com/q/1010000009166404/a-1020000009187068
 2017年8月30日
 1. 添加博客预览图
 2. 精简Readme，新增DevLog
+
+2017年10月4日
+1. git config --global user.name FrankKai
+2. git config --global user.email gaokai20100801@gmail.com
