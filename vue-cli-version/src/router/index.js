@@ -10,6 +10,7 @@ import Blog from '../page/blog.vue'
 import Category from '../page/category.vue'
 import Record from '../page/record.vue'
 import Tag from '../page/tag.vue'
+import articleLists from '../components/category/articlelists.vue'
 
 
 export default new Router({
@@ -39,7 +40,7 @@ export default new Router({
             component: Blog
         },
         {
-            path: '/blog:article',
+            path: '/blog/:article',
             name: 'article',
             component: Article
         },
@@ -47,6 +48,16 @@ export default new Router({
             path: '/category',
             name: 'category',
             component: Category
+        },
+        {
+            path: '/category/:articleLists',
+            name: 'category',
+            component: articleLists
+        },
+        {
+            path: '/category/:articleLists/:article',
+            name: 'article',
+            component: Article
         },
         {
             path: '/record',

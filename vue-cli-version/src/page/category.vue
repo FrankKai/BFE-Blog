@@ -2,10 +2,16 @@
   <div class="category">
     <!-- {{msg}} -->
     <navigation></navigation>
-    <p v-for="category in categories" :key="category.name">
-      {{category.name}}
-      {{category.num}}
-    </p>
+    <ul id="cat">
+      <li v-for="(category,index) in categories" :key="category.name" @click="getArticles(index)">
+        <a :href="'http://localhost:8080/#/category/'+category.name">
+        {{category.name}}
+        {{category.num}}
+        </a>
+      </li>
+    </ul>
+    <!-- <p v-for="category in categories" :key="category.name">
+    </p> -->
   </div>
 </template>
 
@@ -13,27 +19,26 @@
 import navigation from '../components/common/navigation.vue'
 // import axios from 'axios'
 import dataApi from '../api/dataapi'
-import { SET_DATA } from '../store/mutation-types'
+import { SET_DATA,FILTE_ARTICLES } from '../store/mutation-types'
 export default {
   name: 'category',
   template: '<category/>',
   components:{navigation},
   data () {
     return {
-      msg: 'category',
-      // categories: []
+      msg: 'category'
     }
   },
   created () {
-    // axios.get('http://localhost:3002').then((res)=>{
-    //   console.log(res)
-    //   this.categories = res.data
-    // })
+
   },
   computed:{
     categories(){
       return this.$store.state.data[1]
     }
+    // arcindex(){
+    //   return this.index
+    // }
   },
   mounted(){
     let that=this;
@@ -41,8 +46,14 @@ export default {
         that.$store.commit(SET_DATA,data);
       }
     )
-    // console.log(that.$store)
   },
+  methods:{
+      getArticles:function(index){
+        // let that = this
+        // console.log(this)
+        this.$store.commit(FILTE_ARTICLES,index)
+      }
+  }
 }
 </script>
 

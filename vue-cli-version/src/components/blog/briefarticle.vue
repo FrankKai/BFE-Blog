@@ -49,7 +49,7 @@ export default {
   methods:{
     filteArticle: function(){
       this.$store.commit(FILTE_ARTICLE,this.index);
-      this.$router.push({path:'/blog:article'});
+      this.$router.push({path:'/blog/'+this.title});
     }
   }
 }

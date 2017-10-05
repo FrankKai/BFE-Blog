@@ -10,7 +10,8 @@ var obj={
 }
 var categories = {
     name: '',
-    num: 0
+    num: 0,
+    articles: []
 }
 
 const fs = require("fs")
@@ -65,6 +66,7 @@ fs.readdir('../vue-cli-version/src/article/categories',(err,files)=>{
                 console.log(files)
                 categories.name = v
                 categories.num = files.length
+                categories.articles = files
                 mddataarr[1].push(categories)
                 categories = {}
             })

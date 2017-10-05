@@ -8,7 +8,11 @@ Vue.use(Vuex)
 const state = {
     data: '',
 	// articles: []
-	currentArticle: ''
+	currentArticle: '',
+	currentArticles: {
+		name:'',
+		data:[]
+	}
 }
 
 export default new Vuex.Store({
