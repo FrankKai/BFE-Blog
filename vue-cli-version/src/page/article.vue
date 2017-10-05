@@ -1,7 +1,7 @@
 <template>
     <div class="article">
         <!-- <vue-markdown>**test**</vue-markdown> -->
-        <vue-markdown>{{article.content}}</vue-markdown>
+        <vue-markdown class="article-content">{{article.content}}</vue-markdown>
         <!-- <p>{{mddata}}</p> -->
     </div>
 </template>
@@ -19,14 +19,7 @@ export default {
         }
     },
     created() {
-        // Axios.get('http://localhost:3001')
-        //     .then((res)=>{
-        //         console.log(res)
-        //         this.mddata = res.data
-        //     })
-        //     .catch((err)=>{
-        //         console.log(err)
-        //     })
+
     },
     watch: {
         mddata: function(){
@@ -43,4 +36,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.article-content{
+    width: 80%;
+    margin: auto;
+}
 </style>

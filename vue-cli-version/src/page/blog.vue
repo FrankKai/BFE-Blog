@@ -7,6 +7,7 @@
       v-bind:index="index"
       v-bind:key="item.id"
       :title="item.title"
+      :birthtime="item.birthtime"
     ></briefarticle>
     <!-- <briefarticle></briefarticle> -->
     <blogger></blogger>
@@ -49,7 +50,7 @@ export default {
   },
   computed:{
       articles(){
-        return this.$store.state.data
+        return this.$store.state.data[0]
       }
   }
 }

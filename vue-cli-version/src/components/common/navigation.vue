@@ -19,7 +19,7 @@
   </el-menu> -->
   <el-row :gutter="20">
     <el-col :span="4"><div class="grid-content bg-purple"><a href="http://localhost:8080/#/blog">博客</a></div></el-col>
-    <el-col :span="4"><div class="grid-content bg-purple"><a href="http://localhost:8080/#/category">分类</a></div></el-col>
+    <el-col :span="4"><div class="grid-content bg-purple"><a href="http://localhost:8080/#/category">目录</a></div></el-col>
     <el-col :span="4"><div class="grid-content bg-purple"><a href="http://localhost:8080/#/record">归档</a></div></el-col>
     <el-col :span="4"><div class="grid-content bg-purple"><a href="http://localhost:8080/#/tag">标签</a></div></el-col>
     <el-col :span="4"><div class="grid-content bg-purple"><a href="http://localhost:8080/#/home">返回封面</a></div></el-col>

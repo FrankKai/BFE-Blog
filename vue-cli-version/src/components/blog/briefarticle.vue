@@ -8,8 +8,16 @@
             <div style="padding: 14px;">
                 <!-- <span>{{arcindex}}</span> -->
                 <p>{{title}}</p>
+                <div>
+                  <el-tag>标签一</el-tag>
+                  <el-tag type="gray">标签二</el-tag>
+                  <el-tag type="primary">标签三</el-tag>
+                  <el-tag type="success">标签四</el-tag>
+                  <el-tag type="warning">标签五</el-tag>
+                  <el-tag type="danger">标签六</el-tag>
+                </div>
                 <div class="bottom clearfix">
-                <time class="time">{{ currentDate }}</time>
+                <time class="time">{{ birthtime }}</time>
                 <el-button type="text" class="button" @click="filteArticle()">阅读全文</el-button>
                 </div>
             </div>
@@ -25,12 +33,12 @@ import { FILTE_ARTICLE } from '../../store/mutation-types'
 export default {
   name: 'birefarticle',
   template: '<birefarticle/>',
-  props:['index','title','item'],
+  props:['index','title','item','birthtime'],
   // arcindex:0,
   data () {
     return {
       // msg: 'Welcome to Your Vue.js App',
-      currentDate: new Date()
+      // currentDate: new Date()
     }
   },
   computed:{
