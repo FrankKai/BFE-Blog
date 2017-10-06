@@ -9,12 +9,7 @@
                 <!-- <span>{{arcindex}}</span> -->
                 <p>{{title}}</p>
                 <div>
-                  <el-tag>标签一</el-tag>
-                  <el-tag type="gray">标签二</el-tag>
-                  <el-tag type="primary">标签三</el-tag>
-                  <el-tag type="success">标签四</el-tag>
-                  <el-tag type="warning">标签五</el-tag>
-                  <el-tag type="danger">标签六</el-tag>
+                  <el-tag v-for="item in tags" :key="item">{{item}}</el-tag>
                 </div>
                 <div class="bottom clearfix">
                 <time class="time">{{ birthtime }}</time>
@@ -44,6 +39,9 @@ export default {
   computed:{
     arcindex(){
       return this.index
+    },
+    tags(){
+      return this.$store.state.data[0][this.index].tags
     }
   },
   methods:{
@@ -93,5 +91,8 @@ display: block;
 
 .clearfix:after {
     clear: both
+}
+.el-tag{
+  margin-left: 5px;
 }
 </style>

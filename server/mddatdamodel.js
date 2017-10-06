@@ -19,7 +19,7 @@ db.once('open',function(){
         title:'foo',
         subtitle:'subfoo',
         category:'frontend',
-        tags:['element-ui','vuex','vue-router','axios'],
+        tags:['elementUI','vuex','vueRouter','axios'],
         content:'1234'
     })
     Foo.save(function (err) {
@@ -31,7 +31,7 @@ db.once('open',function(){
         title:'bar',
         subtitle:'subbar',
         category:'frontend',
-        tags:['element-ui','vuex','vue-router','axios'],
+        tags:['elementUI','vuex','vueRouter','axios'],
         content:'5678'
     })
     Bar.save(function (err) {
