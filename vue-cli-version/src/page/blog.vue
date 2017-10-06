@@ -12,12 +12,14 @@
     <!-- <briefarticle></briefarticle> -->
     <blogger></blogger>
     <timestamp></timestamp>
+    <!-- <article></article> -->
     <!-- <div>{{articles}}</div> -->
     <!-- <vue-markdown class="vue-markdown" v-for="item in articles" :key="item.id">
       {{item.title}}
       {{item.content}}
     </vue-markdown> -->
     <!-- <vue-markdown># 123</vue-markdown> -->
+    <!-- <category></category> -->
   </div>
 </template>
 
@@ -28,6 +30,8 @@ import blogger from '../components/blog/blogger.vue'
 import timestamp from '../components/blog/timestamp.vue'
 import dataApi from '../api/dataapi'
 import { SET_DATA } from '../store/mutation-types'
+// import Category from './category.vue'
+// import Article from './article.vue'
 // import VueMarkdown from 'vue-markdown'
 
 

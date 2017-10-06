@@ -65,6 +65,11 @@ export default new Router({
             component: Record
         },
         {
+            path: '/record/:article',
+            name: 'record',
+            component: Article
+        },
+        {
             path: '/tag',
             name: 'tag',
             component: Tag

@@ -2,14 +2,19 @@
   <div class="record">
     <!-- {{msg}} -->
     <navigation></navigation>
-    <P>foo</P>
-    <P>bar</P>
-    <P></P>
+    <ul>
+      <li v-for="(item,index) in articles" :key="item.name" @click="filteArticle(index,item.title)">
+        {{item.title}}
+        {{item.birthtime}}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 import navigation from '../components/common/navigation.vue'
+import { FILTE_ARTICLE } from '../store/mutation-types'
+
 export default {
   name: 'record',
   template: '<record/>',
@@ -17,6 +22,17 @@ export default {
   data () {
     return {
       msg: 'record'
+    }
+  },
+  computed:{
+    articles(){
+      return this.$store.state.data[0]
+    }
+  },
+  methods:{
+    filteArticle: function(index,title){
+      this.$store.commit(FILTE_ARTICLE,index);
+      this.$router.push({path:'/record/'+title});
     }
   }
 }
