@@ -58,8 +58,8 @@ db.once('open', function () {
       poster: String,
       post: String,
       time: Date,
-      imgs: [],
-      comment: []
+      imgs: Array,
+      comment: Array
     }
   });
   var User = mongoose.model('user', userSchema);
