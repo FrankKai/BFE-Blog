@@ -4,7 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 import home from '../page/home.vue'
-import User from '../components/hdu.vue'
+// import User from '../components/hdu.vue'
 import Article from '../page/article.vue'
 import Blog from '../page/blog.vue'
 
@@ -20,10 +20,10 @@ export default new Router({
             name: 'home',
             component: home
         },
-        { 
-            path: '/home/:id', 
-            component: User
-        },
+        // { 
+        //     path: '/home/:id', 
+        //     component: User
+        // },
         {
             path: '/article',
             name: 'article',

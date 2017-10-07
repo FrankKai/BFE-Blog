@@ -1,3 +1,0 @@
-backend
-
-Array.prototype.filter()

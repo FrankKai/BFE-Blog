@@ -1,10 +1,10 @@
-![博客预览图](https://github.com/FrankKai/BFE-Blog/blob/master/src/assets/images/newcover.png)
+![博客预览图](https://github.com/FrankKai/BFE-Blog/blob/master/preview/main.png)
 <h2>基于webpack+vue+es6+sass+axios的极简个人博客</h2>
 
 **克隆并运行项目步骤：**
 以下命令在Git Bash/CMD/Powershell中均有效。
 1. 克隆  
-`git clone https://github.com/FrankKai/Vue-Practice.git`
+`git clone https://github.com/FrankKai/BFE-BLOG.git`
 2. 安装依赖  
 `npm install`
 3. 构建项目  

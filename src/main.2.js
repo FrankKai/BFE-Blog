@@ -3,9 +3,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import Element from 'element-ui'
-import 'element-ui/lib/theme-default/index.css'
-import store from './store'
+// import Element from 'element-ui'
+// import 'element-ui/lib/theme-default/index.css'
 // import Bootstrap from 'bootstrap'
 // import Jquery from 'jquery'
 // import store from './store/'
@@ -14,14 +13,13 @@ import store from './store'
 // import mock from './api/mock.js'
 
 Vue.config.productionTip = false
-Vue.use(Element)
+// Vue.use(Element)
 // Vue.use(Jquery)
 // Vue.use(Bootstrap)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  store,
   template: '<App/>',
   components: { App }
 })
